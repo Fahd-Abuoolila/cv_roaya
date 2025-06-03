@@ -1,0 +1,163 @@
+body {
+    background: #f7f7f7;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    direction: rtl;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #333;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-left: 20px;
+    object-fit: cover;
+}
+
+.header .info h1 {
+    margin: 0;
+    font-size: 30px;
+    margin-bottom: 23px;
+}
+
+.header .info span {
+    margin: 5px 0;
+    font-weight: 900;
+    font-size: 13px;
+}
+
+.header .info h3 {
+    margin: 5px 0 0;
+    color: rgb(167, 0, 61);
+    font-weight: normal;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 24px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.data_employ,
+.emploee,
+.data_study {
+    display: grid;
+    grid-template-columns: repeat(2, 3fr);
+    justify-items: start;
+}
+
+.data_employ+div,
+.data_study+div,
+.emploee+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data_study+div>img {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    border-radius: 5px;
+    margin-left: 20px;
+    object-fit: cover;
+}
+
+.emploee+div>img {
+    width: fit-content;
+    height: 300px;
+    min-height: 300px;
+    border-radius: 5px;
+    margin-left: 20px;
+    object-fit: cover;
+}
+
+.data_employ+div>img,
+.data_employ+div>img+img {
+    width: 50%;
+    height: 300px;
+    border-radius: 5px;
+    margin-left: 20px;
+    object-fit: cover;
+}
+
+.section p,
+.section li {
+    line-height: 1.6;
+}
+
+.section p strong {
+    background: #0056b3;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.experience-item,
+.education-item {
+    margin-bottom: 20px;
+}
+
+.experience-item h3,
+.education-item h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #0056b3;
+}
+
+.experience-item p.date,
+.education-item p.date {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+}
+
+ul.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul.skills-list li {
+    display: inline-block;
+    background: #0056b3;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin: 5px 5px 0 0;
+    font-size: 14px;
+}
+
+/* تحسين الطباعة */
+@media print {
+    body {
+        background: #fff;
+    }
+
+    .container {
+        box-shadow: none;
+    }
+}

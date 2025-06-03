@@ -1,0 +1,940 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta name='description' content='this system is private property'>
+
+<link rel='icon' href='../img/logo_icon.png'>
+<link rel='stylesheet' href='../css/style.css'>
+<link rel='stylesheet' href='../css/staff_data.css'>
+<link rel='stylesheet' href='../css/menu.css'>
+<link rel='stylesheet' href='../css/all.min.css'>
+<link rel='stylesheet' href='../css/bootstrap.css'>
+<title>Theqa Pay</title>
+<style>
+
+</style>
+</head>
+
+<body>
+
+</body> -->
+
+</html>
+<?php
+    require('../inc/config.php');
+    $ID = $_GET['data_id'];
+    $select = mysqli_query($conection, "SELECT * FROM employee_specific WHERE user_id=$ID");
+    $data = mysqli_fetch_array($select);
+    
+    require_once __DIR__ . '/vendor/autoload.php';
+    $mpdf = new \Mpdf\Mpdf([
+        'mode' => 'utf-8',
+        'format' => 'A4',
+        'default_font' => 'Cairo',
+        'default_font_size' => 16,
+    ]);
+
+    $mpdf->fontdata['Cairo'] = [
+        'R' =>  '../font/static/Cairo-Regular.ttf', // الخط العادي
+        'B' =>  '../font/static/Cairo-Bold.ttf',    // الخط العريض
+    ];
+    $mpdf->autoScriptToLang = true; // تمكين دعم اللغة العربية
+    $mpdf->autoLangToFont = true; // تمكين دعم الخطوط للغة العربية
+    $mpdf->shrink_tables_to_fit = 2;
+    $mpdf->SetDirectionality('rtl'); // تعيين اتجاه الكتابة من اليمين لليسار
+    $mpdf->SetDisplayMode('fullpage');
+    $mpdf->SetMargins(3, 3, 3); // تعيين الهوامش إلى 0
+    
+    $mpdf->SetProtection(array('print'));
+    $mpdf->SetTitle($data['user_name'] . '_CV');
+    $mpdf->SetAuthor('Theqa Pay');
+    $mpdf->SetCreator('Theqa Pay');
+    $mpdf->SetSubject('personal cv');
+    $mpdf->SetKeywords('CV, Theqa Pay,'. $data['user_name']);
+
+    if (file_exists(__DIR__ . '/css_print/logo_icon.png')) {
+        $mpdf->SetWatermarkImage(__DIR__ . '/css_print/logo_icon.png');
+        $mpdf->showWatermarkImage = true;
+        $mpdf->SetWatermarkText('Theqa Pay');
+        $mpdf->showWatermarkText = true;
+    }else{
+        $mpdf->SetWatermarkText('Theqa Pay');
+        $mpdf->showWatermarkText = true;
+    }
+    
+    if (!file_exists('../font/static/Cairo-Bold.ttf')) {
+        
+        $mpdf->SetWatermarkText('DRAFT');
+        $mpdf->showWatermarkText = true;
+    }else{
+    }
+
+    $stylesheet = file_get_contents('css_print/print.css');
+    if(!$stylesheet) { die("فشل تحميل ملف CSS"); }
+    $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
+
+    if (isset($_GET['export'])) {
+        $content = '<div style="width: 100%; overflow: hidden;"><div style="float: right; width: fit-content; text-align: right;"><p class="title text-dark">شــركـة ثقــة لخــدمـات الـدفـع الإلكـترونـي و الحــلول المــتكامـلة ش . م . م</p></div><div style="float: left; width: fit-content; text-align: left;"><img class="logo" src="../img/logo.png" alt="Logo"></div></div>';
+        $content .= '<div style="text-align: center; margin-top: 20px;"><span class="under-header" style="font-size: 18px; font-weight: bold;">الإستمارة الإلكترونية للموظف</span></div>';
+        $content .= '
+            <div class="container">  
+                <div class="header"> 
+                    <div class="info"> 
+                        <h1>'. $data['user_name'] .'</h1> 
+                        <span>الوظيفة المطلوبة</span>
+                        <h3>'. $data['job_name'] .'</h3> 
+                    </div> <!-- صورة الموظف، تأكد من وجود ملف الصورة في نفس المجلد أو توفير المسار الصحيح --> 
+                    <img src="../uploads/'.$data['photoOFuser'].'" alt="صورة الموظف"> 
+                </div><!-- بيانات التواصل -->
+                <div class="section">
+                    <h2>بيانات الموظف</h2>
+                    <div class="data_employ">
+                        <p>
+                            <strong>البريد الإلكتروني:</strong> '. $data['user_email'].'
+                        </p>
+                        <p>
+                            <strong>الموقف من التجنيد:</strong> '. $data['enlistment'].'
+                        </p>
+                        <p>
+                            <strong>الجنسية:</strong> '.['nationality'].'
+                        </p>
+                        <p>
+                            <strong>الديانة:</strong> '. $data['religion'].'
+                        </p>
+                        <p>
+                            <strong>الحالة الأجتماعية:</strong> '. $data['marital_status'].'
+                        </p>
+                        <p>
+                            <strong>تاريخ الميلاد:</strong> '. $data['dateOFbirth'].'
+                        </p>
+                        <p>
+                            <strong>محل الميلاد:</strong> '. $data['placeOFbirth'].'
+                        </p>
+                        <p>
+                            <strong> العنوان:</strong> '. $data['address'].'
+                        </p>
+                        <p>
+                            <strong> المحافظة :</strong> '. $data['governorate'].'
+                        </p>
+                        <p>
+                            <strong> مركز :</strong> '. $data['centre'].'
+                        </p>
+                        <p>
+                            <strong> رقم الهاتف :</strong> '. $data['numberOFphpne'].'
+                        </p>
+                    </div>
+                    <div>
+                        <img src="../uploads/'.$data['frontOFcard'].'" alt="صورة الموظف"> <!-- بيانات التواصل -->
+                        <img src="../uploads/'.$data['backOFcard'].'" alt="صورة الموظف"> <!-- بيانات التواصل --->
+                    </div>
+                </div>
+                <!-- المؤهلات العلمية -->
+                <div class="section">
+                    <h2>المؤهلات العلمية</h2>
+                    <div class="data_study">
+                        <p>
+                            <strong>جهة الدراسة :</strong> '. $data['sideOFstudy'].'
+                        </p>
+                        <p>
+                            <strong> التخصص :</strong> '. $data['specialization'].'
+                        </p>
+                        <p>
+                            <strong>سنه التخرج:</strong> '. $data['graduation_year'].'
+                        </p>
+                        <p>
+                            <strong>المؤهل الدراسي:</strong> '. $data['educational_qualification'].'
+                        </p>
+                    </div>
+                </div>
+                <!-- الخبرة العملية -->
+                <div class="section">
+                    <h2> الدورات التدريبية</h2>
+                    <div class="data_study">
+                        <p>
+                            <strong>جهة الدراسة :</strong> '. $data['course_name'].'
+                        </p>
+                        <p>
+                            <strong> التخصص :</strong> '. $data['course_location'].'
+                        </p>
+                        <p>
+                            <strong>سنه التخرج:</strong> '. $data['course_duration'].'
+                        </p>
+                        <p>
+                            <strong>المؤهل الدراسي:</strong> '. $data['typeOFcertificate'].'
+                        </p>
+                    </div>
+                    <div>
+                        <img src="../uploads/'.$data['photoOFcertificate'].'" alt=" ">   
+                    </div>
+                </div>
+            ';
+
+            if($data['job_name_1'] != "" || $data['job_name_1'] != null){
+                $content .= '
+                    <div class="section">
+                        <h2>الخبرة العملية</h2>
+                        <div class="emploee">
+                            <p>
+                                <strong>المسمى الوظيفي :</strong> '. $data['job_name_1'] 
+                            .'</p>
+                            <p>
+                                <strong> جهة العمل :</strong>'. $data['job_duration_1'] 
+                            .'</p>
+                            <p>
+                                <strong>الفترة من :</strong>'.  $data['pointOFstart_1']
+                            .'</p>
+                            <p>
+                                <strong>الي :</strong>'.  $data['pointOFend_1']
+                            .'</p>
+                            <p>
+                                <strong>الراتب :</strong>'. $data['salary_1']
+                            .'</p>
+                            <p>
+                                <strong>هل تعمل في الوقت الحالي	 :</strong>'.  $data['do_you_work_1']
+                            .'</p>
+                            <p>
+                                <strong>سبب ترك العمل :</strong>'. $data['reasonFORleaving_1']
+                            .'</p>
+                        </div>
+                        <div>
+                            <img src="../uploads/'. $data['attached_1'] .'" alt="بيانات التواصل"> 
+                        </div>
+                    </div>
+                ';
+            }
+            if($data['job_name_2'] != "" || $data['job_name_2'] != null){
+                $content .= '
+                    <div class="section">
+                        <h2>الخبرة العملية</h2>
+                        <div class="emploee">
+                            <p>
+                                <strong>المسمى الوظيفي :</strong> '. $data['job_name_2'] 
+                            .'</p>
+                            <p>
+                                <strong> جهة العمل :</strong>'. $data['job_duration_2'] 
+                            .'</p>
+                            <p>
+                                <strong>الفترة من :</strong>'.  $data['pointOFstart_2']
+                            .'</p>
+                            <p>
+                                <strong>الي :</strong>'.  $data['pointOFend_2']
+                            .'</p>
+                            <p>
+                                <strong>الراتب :</strong>'. $data['salary_2']
+                            .'</p>
+                            <p>
+                                <strong>سبب ترك العمل :</strong>'. $data['reasonFORleaving_2']
+                            .'</p>
+                        </div>
+                        <div>
+                            <img src="../uploads/'. $data['attached_2'] .'" alt="بيانات التواصل"> 
+                        </div>
+                    </div>
+                ';
+            }
+            if($data['job_name_3'] != "" || $data['job_name_3'] != null){
+                $content .= '
+                    <div class="section">
+                        <h2>الخبرة العملية</h2>
+                        <div class="emploee">
+                            <p>
+                                <strong>المسمى الوظيفي :</strong> '. $data['job_name_3'] 
+                            .'</p>
+                            <p>
+                                <strong> جهة العمل :</strong>'. $data['job_duration_3'] 
+                            .'</p>
+                            <p>
+                                <strong>الفترة من :</strong>'.  $data['pointOFstart_3']
+                            .'</p>
+                            <p>
+                                <strong>الي :</strong>'.  $data['pointOFend_3']
+                            .'</p>
+                            <p>
+                                <strong>الراتب :</strong>'. $data['salary_3']
+                            .'</p>
+                            <p>
+                                <strong>سبب ترك العمل :</strong>'. $data['reasonFORleaving_3']
+                            .'</p>
+                        </div>
+                        <div>
+                            <img src="../uploads/'. $data['attached_3'] .'" alt="بيانات التواصل"> 
+                        </div>
+                    </div>
+                ';
+            }
+            if($data['job_name_4'] != "" || $data['job_name_4'] != null){
+                $content .= '
+                    <div class="section">
+                        <h2>الخبرة العملية</h2>
+                        <div class="emploee">
+                            <p>
+                                <strong>المسمى الوظيفي :</strong> '. $data['job_name_4'] 
+                            .'</p>
+                            <p>
+                                <strong> جهة العمل :</strong>'. $data['job_duration_4'] 
+                            .'</p>
+                            <p>
+                                <strong>الفترة من :</strong>'.  $data['pointOFstart_4']
+                            .'</p>
+                            <p>
+                                <strong>الي :</strong>'.  $data['pointOFend_4']
+                            .'</p>
+                            <p>
+                                <strong>الراتب :</strong>'. $data['salary_4']
+                            .'</p>
+                            <p>
+                                <strong>سبب ترك العمل :</strong>'. $data['reasonFORleaving_4']
+                            .'</p>
+                        </div>
+                        <div>
+                            <img src="../uploads/'. $data['attached_4'] .'" alt="بيانات التواصل"> 
+                        </div>
+                    </div>
+                ';
+            }
+            $content .= '
+                <div class="section">
+                    <h2>الشخص الأول الذي يمكن الرجوع اليه</h2>
+                    <div class="data_study">
+                        <p>
+                            <strong>اسم الشخص :</strong> '. $data['person_name_1'].'
+                        </p>
+                        <p>
+                            <strong>وظيفته :</strong> '. $data['person_employer_1'].'
+                        </p>
+                        <p>
+                            <strong>عنوان الاتصال :</strong> '. $data['person_address_1'].'
+                        </p>
+                        <p>
+                            <strong>رقم الهاتف :</strong> '. $data['person_phone_1'].'
+                        </p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2>الشخص الثاني الذي يمكن الرجوع اليه</h2>
+                    <div class="data_study">
+                        <p>
+                            <strong>اسم الشخص :</strong> '. $data['person_name_2'].'
+                        </p>
+                        <p>
+                            <strong>وظيفته :</strong> '. $data['person_employer_2'].'
+                        </p>
+                        <p>
+                            <strong>عنوان الاتصال :</strong> '. $data['person_address_2'].'
+                        </p>
+                        <p>
+                            <strong>رقم الهاتف :</strong> '. $data['person_phone_2'].'
+                        </p>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2>الشخص الثالث الذي يمكن الرجوع اليه</h2>
+                    <div class="data_study">
+                        <p>
+                            <strong>اسم الشخص :</strong> '. $data['person_name_3'].'
+                        </p>
+                        <p>
+                            <strong>وظيفته :</strong> '. $data['person_employer_3'].'
+                        </p>
+                        <p>
+                            <strong>عنوان الاتصال :</strong> '. $data['person_address_3'].'
+                        </p>
+                        <p>
+                            <strong>رقم الهاتف :</strong> '. $data['person_phone_3'].'
+                        </p>
+                    </div>
+                </div>
+            </div>
+    ';
+    } else {
+        $content = '';
+    }
+    $mpdf->WriteHTML($content, \Mpdf\HTMLParserMode::HTML_BODY);
+    $mpdf->Output("cv.pdf", 'I');
+    $mpdf->Output(" cv.pdf", 'D' );
+    $content = $_POST['paper_content'] ;
+    echo $content ;
+    $stylesheet = file_get_contents(__DIR__ . '/css_print/print.css');
+            echo $stylesheet;
+?> 
+
+<?php
+// بيانات الموظف (يمكن جلبها من قاعدة بيانات أيضاً)
+// $data = [
+//     "name"       => "اسم الموظف",
+//     "profession" => "المسمى الوظيفي",
+//     "email"      => "البريد الإلكتروني",
+//     "phone"      => "رقم الهاتف",
+//     "address"    => "العنوان",
+//     "experience" => [
+//         [
+//             "position"    => "المنصب الوظيفي 1",
+//             "company"     => "اسم الشركة 1",
+//             "duration"    => "الفترة الزمنية",
+//             "description" => "وصف مختصر للمهام والمسؤوليات."
+//         ],
+//         [
+//             "position"    => "المنصب الوظيفي 2",
+//             "company"     => "اسم الشركة 2",
+//             "duration"    => "الفترة الزمنية",
+//             "description" => "وصف مختصر للمهام والمسؤوليات."
+//         ]
+//     ],
+//     "education" => [
+//         [
+//             "degree"     => "المؤهل العلمي",
+//             "institution"=> "اسم المؤسسة التعليمية",
+//             "year"       => "سنة التخرج"
+//         ]
+//     ],
+//     "skills" => ["مهارة 1", "مهارة 2", "مهارة 3"]
+// ];
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div style="margin-top: -3.2px; border-left: 2px solid #000 ;width: 25%; display: inline-block; background: #ddd; text-align: right;">
+        <span style="margin-right: 5px; margin-left: 50px;" >الأسم الأول</span>
+        <span style="" >First Name</span>
+    </div>
+    <div style="margin-right: -5px; margin-top: -3.2px; width: 25%; display: inline-block; background: #ddd; text-align: right;border-left: 2px solid #000 ;">
+        <span style="margin-right: 10px; margin-left: 45px;">أسم الأب</span>
+        <span style="">Middle Name</span>
+    </div>
+    <div style="border-left: 2px solid #000 ;margin-right: -5px; margin-top: -3.2px; width: 26%; display: inline-block; background: #ddd; text-align: right;">
+        <span style="margin-right: 11px; margin-left: 6px;">أسم الجد</span>
+        <span style="">Grand Father'. "'" . 's  Name</span>
+    </div>
+    <div style="margin-right: -5px;margin-top: -3.2px; width: 23%; display: inline-block; background: #ddd; text-align: right;">
+        <span style="margin-left: 19px;margin-right: 10px;">أسم العائلة</span>
+        <span style="">Family Name</span>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="work">
+                <div>طلب توظيف</div>
+                <div>Employment Form</div>
+            </div>
+            <div class="info">المعلومات الشخصية</div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>الاسم الأول</div>
+                            <div>First Name</div>
+                        </td>
+                        <td>
+                            <div>اسم الأب</div>
+                            <div>Middle Name</div>
+                        </td>
+                        <td>
+                            <div>اسم الجد</div>
+                            <div>Grandfatder' . "'" . 's Name</div>
+                        </td>
+                        <td>
+                            <div>اسم العائلة</div>
+                            <div>Family Name</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>الرقم القومي</div>
+                            <div>National ID</div>
+                        </td>
+                        <td>
+                            <div>تاريخ الإصدار</div>
+                            <div>Date of Issue</div>
+                        </td>
+                        <td>
+                            <div>مكان الإصدار</div>
+                            <div>Place of Issue</div>
+                        </td>
+                        <td>
+                            <div>الجنسية</div>
+                            <div>Nationality</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>مكان الميلاد</div>
+                            <div>Place Birtd</div>
+                        </td>
+                        <td>
+                            <div>تاريخ الميلاد</div>
+                            <div>Date Birtd</div>
+                        </td>
+                        <td>
+                            <div>رقم التأمينات</div>
+                            <div>الإجتماعية</div>
+                        </td>
+                        <td class="military">
+                            <div>الموقف من التجنيد</div>
+                            <div>Position on tde military</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>الحالة الإجتماعية</div>
+                        </td>
+                        <td>
+                            <div>عدد الأبناء</div>
+                            <div>No. of Children</div>
+                        </td>
+                        <td class="jop">
+                            <div>الوظيفة المطلوبة</div>
+                            <div>job required</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="last-child"></td>
+                        <td class="last-child"></td>
+                        <td class="last-child" id="information"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="information">
+                <div>المعلومات</div>
+                <div>Contact information</div>
+            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>الهاتف 1-</div>
+                            <div>Tel . No.</div>
+                        </td>
+                        <td>
+                            <div>الهاتف 2-</div>
+                            <div>Tel . No.</div>
+                        </td>
+                        <td class="jop">
+                            <div>محل السكن</div>
+                            <div>Place of residence</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="jop"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>مركز / حى</div>
+                            <div>City / Center</div>
+                        </td>
+                        <td>
+                            <div>المحافظة</div>
+                            <div>Governorate</div>
+                        </td>
+                        <td class="jop">
+                            <div>الرمز البريدي</div>
+                            <div>Area Code</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="jop"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="email" id="last-child">
+                <div class="label">Email Address</div>
+                <div class="label">البريد الإلكتروني</div>
+            </div>
+            <div class="education">
+                <div>المؤهلات العلمية</div>
+                <div>Education</div>
+            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="military">
+                            <div>المؤهل العلمي</div>
+                            <div class="academic">Academic Qualifications</div>
+                        </td>
+                        <td class="military">
+                            <div>اسم الجامعة</div>
+                            <div>Name of University</div>
+                        </td>
+                        <td>
+                            <div>مكانها</div>
+                            <div>Location</div>
+                        </td>
+                        <td class="military">
+                            <div>مدة الدراسة</div>
+                            <div>No. of Years</div>
+                        </td>
+                        <td class="military">
+                            <div>المعدل التراكمي</div>
+                            <div>GPA</div>
+                        </td>
+                        <td class="military">
+                            <div>سنة التخرج</div>
+                            <div>Year Graduated</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td id="last-child"></td>
+                        <td id="last-child"></td>
+                        <td id="last-child"></td>
+                        <td id="last-child"></td>
+                        <td id="last-child"></td>
+                        <td id="last-child"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="training">
+                <div>الدورات التدريبية</div>
+                <div>Training Programs</div>
+            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>اسم الدورة</div>
+                            <div>Course Title</div>
+                        </td>
+                        <td>
+                            <div>مدتها</div>
+                            <div>Duration</div>
+                        </td>
+                        <td class="military">
+                            <div>الجهة التي أعدتها</div>
+                            <div>Sponsor</div>
+                        </td>
+                        <td>
+                            <div>تاريخها</div>
+                            <div>Date</div>
+                        </td>
+                        <td>
+                            <div>مكانها</div>
+                            <div>Location</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td id="last-child"></td>
+                        <td id="last-child"></td>
+                        <td id="last-child"></td>
+                        <td id="last-child"></td>
+                        <td id="last-child"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="signature">
+                <p>توقيع الموظف علي بيانات الصفحة الأولي / .........................................................</p>
+                <!-- <div class="manager">
+                    <span>ختم رئيس مجلس الإدارة</span>
+                    <div class="bgcolor"></div>
+                </div> -->
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="content">
+            <div class="work">
+                <div>
+                    work
+                </div>
+                <div>
+                    الخبرة العملية
+                </div>
+            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="military">
+                            <div>أسم الجهة</div>
+                            <div>Employer Name</div>
+                        </td>
+                        <td class="military">
+                            <div>سم الوظيفة</div>
+                            <div>Position</div>
+                        </td>
+                        <td class="military">
+                            <div>تاريخ</div>
+                            <div class="to">
+                                <div>
+                                    من
+                                </div>
+                                <div>
+                                    To
+                                </div>
+                            </div>
+                        </td>
+                        <td class="military">
+                            <div>Date</div>
+                            <div class="from">
+                                <div>
+                                    إلي
+                                </div>
+                                <div>
+                                    From
+                                </div>
+                            </div>
+                        </td>
+                        <td class="military">
+                            <div class="size">الراتب الشهري الأساسي</div>
+                            <div>Basic Monthly salary</div>
+                        </td>
+                        <td class="military">
+                            <div>سبب ترك الوظيفة</div>
+                            <div>Reasons for Leaving</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td id="last-child">
+                            إجمالي الدخل الشهري لاخر وظيفة
+                        </td>
+                        <td id="last-child"></td>
+                        <td id="last-child" class="first-child">
+                            Total Monthly Income for last position
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>

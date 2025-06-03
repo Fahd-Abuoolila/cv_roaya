@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reem+Kufi+Ink&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Kufam:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reem+Kufi+Ink&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=El+Messiri:wght@400..700&family=Kufam:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reem+Kufi+Ink&display=swap');
+
+@import url('bootstrap.css');
+
+/* general */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Cairo", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: #ced4da;
+    border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0056b3;
+    border-radius: 25px;
+}
+
+body {
+    background: #333 !important;
+    direction: rtl !important;
+    color: #fff !important;
+}
+
+:root {
+    --SecondColorBack: #fff;
+    --MainColorBack: #193149;
+    --second-color: #3c2f39;
+}
+
+/* alert */
+#alert {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 9999;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+}
+
+/* header */
+.header {
+    background: var(--MainColorBack);
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    width: 100%;
+    height: 56px;
+    padding: 3px 0;
+    border-bottom: 1px solid #001;
+}
+
+.header a img {
+    height: 62px;
+    width: 165px;
+    margin: -10px 10px 0;
+}
+
+.header>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header>div .navbar-brand {
+    color: #fff;
+    text-align: center;
+    width: 260px;
+    margin: 0;
+}
+
+.header>div .navbar-brand .brand-text {
+    display: inline;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+
+.header>div>div#nav {
+    width: calc(100% - 260px);
+    background: var(--MainColorBack);
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+
+.header>div>div#nav>div.navbar-toggler {
+    left: 100px;
+}
+
+.header>div>div#nav>.navbar-collapse>div>form>div.d-inline-flex>.input-group>.search {
+    box-shadow: none !important;
+    border-radius: 0 20px 20px 0;
+}
+
+.header>div>div#nav>.navbar-collapse {
+    display: block;
+    left: 0;
+}
+
+.header>div>div#nav>.navbar-collapse>div {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.header>div>div#nav>.navbar-collapse>div>form>div.d-inline-flex .select {
+    height: 38px;
+    width: 100px;
+    color: #000;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    border: none;
+}
+
+.header>div>div#nav .select>option {
+    color: #000;
+}
+
+.header>div>div#nav>.navbar-collapse>div>form>div.d-inline-flex>.input-group>.form-control {
+    border-radius: 0;
+    border-color: #ced4da;
+    box-shadow: none;
+}
+
+/* --------- dropdown --------- */
+.header>div>div#nav>.navbar-collapse>div>.dropdowns {
+    display: flex;
+
+}
+
+.header>div>div#nav>.navbar-collapse>div>.dropdowns button.btn.dropdown-toggle {
+    padding: 2px 7px;
+    box-shadow: none !important;
+    background: transparent;
+    color: #fff !important;
+}
+
+.header>div>div#nav>.navbar-collapse>div>.dropdowns button.btn.dropdown-toggle::after {
+    margin: 0 10px 0 0;
+}
+
+.header>div>div#nav>.navbar-collapse>div>.dropdowns>.dropdown .dropdown-menu.show {
+    text-align: right !important;
+    min-width: 140px;
+    transform: translate3d(0px, 35px, 0px) !important;
+    padding: 0.1rem 0 0 !important;
+}
+
+.header>div>div#nav>.navbar-collapse>div .dropdown .dropdown-menu.show .dropdown-item:active {
+    background-color: #ccc !important;
+}
+
+.header>div>div#nav>.navbar-collapse>div .dropdown .dropdown-menu.show .dropdown-item {
+    padding: .3rem 10px;
+    text-align: justify;
+
+}
+
+.header>div>div#nav>.navbar-collapse>div .dropdown img {
+    height: 20px;
+    width: 35px;
+}
+
+.header>div>div#nav>.navbar-collapse>div .dropdown .dropdown-menu.show .dropdown-item p {
+    display: inline-block;
+    color: #000;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.header>div>div#nav>.navbar-collapse>div .dropdown .dropdown-menu.show .dropdown-item p:hover::after {
+    content: 'copy';
+    position: absolute;
+    right: -26%;
+    background-color: #72b6ff;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 3px;
+    z-index: 1;
+}
+
+.header>div>div#nav>.navbar-collapse>div .dropdown .dropdown-menu.show .dropdown-item p:last-child {
+    direction: ltr;
+}
+
+/* content */
+.content {
+    height: calc(100vh - 56px);
+    overflow-x: hidden;
+    display: flex;
+}
+
+.content p {
+    margin: 0 !important;
+}
+
+.show-board {
+    width: 100%;
+    margin: 10px;
+    overflow-x: overlay;
+    padding: 0 10px;
+}
+
+.title-info {
+    background: #0056B3;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.data-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow-x: visible;
+
+}
+
+.data-info .box {
+    background: var(--MainColorBack);
+    height: 150px;
+    flex-basis: 150px;
+    flex-grow: 1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.data-info .box i {
+    font-size: 40px;
+}
+
+.data-info .box .data {
+    text-align: center;
+}
+
+.data-info .box .data span {
+    font-size: 30px;
+}
+
+.show-board>nav {
+    background-color: #fff;
+    padding: 7px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    justify-content: flex-end;
+}
+
+.show-board>nav .export {
+    background: #0056B3;
+}
+
+/* media */
+@media (max-width: 1000px) {
+    .header>div>div#nav>div.navbar-toggler {
+        display: block !important;
+        outline: none;
+        position: fixed;
+        top: 10px;
+    }
+
+    .show-board {
+        margin-top: 60px;
+    }
+
+    .header>div>div#nav>.navbar-collapse {
+        /* display: none; */
+        position: absolute;
+        top: 56px;
+        background: var(--MainColorBack);
+        width: 100vw;
+        margin: 0 !important;
+    }
+
+    .header>div>div#nav>.navbar-collapse>div>form>div.d-inline-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header>div>div#nav>.navbar-collapse>div>form>div.d-inline-flex>.btn-group {
+        margin-bottom: 10px;
+    }
+
+    .header>div>div#nav>.IconMenu {
+        position: fixed;
+        top: 10px;
+        text-align: start;
+        margin: 0;
+        width: 30px;
+        line-height: 5px;
+        height: 30px;
+        cursor: pointer;
+        rotate: 180deg;
+        left: 20px;
+    }
+
+    .header>div>div#nav>.IconMenu>span {
+        display: inline-block;
+        width: 25px;
+        height: 3px;
+        background: #fff;
+    }
+
+    .header>div>div#nav>.IconMenu>span.Active {
+        width: 12.5px;
+        transition: .3s;
+    }
+
+    .header>div>div#nav>.IconMenu:hover>span.Active {
+        width: 25px;
+    }
+
+    .header .header>div>div#nav>button.navbar-toggler {
+        position: relative;
+        top: 5px;
+    }
+
+    .header>div>div#nav>.navbar-collapse>div {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .content>.menu {
+        position: fixed !important;
+        top: 56px !important;
+        transition: all .3s ease-out;
+        right: -260px;
+    }
+
+    .menu-open {
+        right: 0px !important;
+    }
+}
+
+/* -------------------------------------------------------- */
+table {
+    border-radius: 3px;
+    text-align: center;
+    background-color: #fff !important;
+}
+
+table th,
+tr {
+    color: var(--MainColorBack);
+}
+
+table tr:not(.no):hover {
+    background-color: #0056B3;
+    color: var(--SecondColorBack);
+}
+
+table tr.no:hover {
+    background-color: #ffffff !important;
+}
+
+.modal .form-group {
+    text-align: justify;
+    width: 100%;
+}
+
+.modal .form-group label {
+    color: #000 !important;
+}
+
+table .dropdown-menu.show {
+    display: flex !important;
+    justify-content: space-around;
+    flex-direction: column;
+    min-width: 100px;
+    padding: 10px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 15px;
+    width: 88% !important;
+}
+
+.container>.employee {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 40px 0;
+    padding: 30px 25px;
+    background: #e9e9e9;
+    gap: 25px 45px;
+    box-shadow: inset 0px 0px 8px #797979;
+}
+
+.employee>form>div>span {
+    font-size: 18px;
+    color: #267455;
+    font-weight: 500;
+}
+
+.container>span {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    color: #f00;
+    font-weight: 500;
+}
+
+.container>table {
+    width: 100%;
+    border: 2px solid var(--second-color);
+    text-align: center;
+}
+
+.container>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 500;
+    flex-wrap: wrap;
+}
+
+.container>div>img {
+    width: 125px;
+}
+
+.container>table td,
+th {
+    border: 2px solid var(--second-color);
+    padding: 3px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.container>table tr td:first-child {
+    width: 25%;
+}
+
+.container>table tr td:nth-child(2)>img {
+    width: 200px;
+    height: 200px;
+}

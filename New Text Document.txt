@@ -1,0 +1,267 @@
+<tr>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;' colspan='2'>
+                            <span style='font-weight: bold;'>  </span>
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <p style='font-weight: bold;'> جيد </p>
+                            <p style='font-weight: bold;'> Good </p>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <p style='font-weight: bold;'> متوسط </p>
+                            <p style='font-weight: bold;'> Fair </p>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <p style='font-weight: bold;'> ضعيف </p>
+                            <p style='font-weight: bold;'> Poor </p>
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <p style='font-weight: bold;'> جيد </p>
+                            <p style='font-weight: bold;'> Good </p>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <p style='font-weight: bold;'> متوسط </p>
+                            <p style='font-weight: bold;'> Fair </p>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <p style='font-weight: bold;'> ضعيف </p>
+                            <p style='font-weight: bold;'> Poor </p>
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <p style='font-weight: bold;'> جيد </p>
+                            <p style='font-weight: bold;'> Good </p>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <p style='font-weight: bold;'> متوسط </p>
+                            <p style='font-weight: bold;'> Fair </p>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <p style='font-weight: bold;'> ضعيف </p>
+                            <p style='font-weight: bold;'> Poor </p>
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: right; ' colspan='2'>
+                            <span style='font-weight: bold;'>  </span>
+                        </td>
+                    </tr>        
+                    <tr>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;' colspan='2'>
+                            <span style='font-weight: bold;'> اللغة العربية</span>
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' checked/>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' checked/>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' checked/>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; ' colspan='2'>
+                            <span style='font-weight: bold;'> arabic </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;' colspan='2'>
+                            <span style='font-weight: bold;'> اللغة الأنجليزية</span>
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' checked/>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' checked/>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' checked/>
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+                        <td style='width: ; border: 2px solid black; text-align: center; line-height: 10px;'>
+                            <input type='checkbox' />
+                        </td>
+    
+                        <td style='width: ; border: 2px solid black; text-align: center; ' colspan='2'>
+                            <span style='font-weight: bold;'> english </span>
+                        </td>
+                    </tr>
+                </table>
+                <table style='width: 100%; border: 2px solid black; border-collapse: collapse; text-align: center;'>
+                    <tr>
+                        <td style='width: 33%; border: 2px solid black; text-align: right; ' colspan='6'>
+                            <span style='font-weight: bold; margin-right: 90px; margin-left: 580px;'> الهوايات </span>
+                            <span style='font-weight: bold;'> Hobbies </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                    </tr>
+                </table>
+                <table style='width: 100%; border: 2px solid black; border-collapse: collapse; text-align: center;'>
+                    <tr>
+                        <td style='width: 33%; border: 2px solid black; text-align: right; ' colspan='6'>
+                            <span style='font-weight: bold; margin-right: 40px; margin-left: 200px;'> أشخاص بإمكانك الاتصال بهم في الضرورة</span>
+                            <span style='font-weight: bold;'> Persons you could call them in the necessary </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 25%; border: 2px solid black;background-color: #ddd;'>
+                            <span >  اسم الشخص </span>
+                            <span  >Person Name</span>
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;background-color: #ddd;'>
+                            <span >  صلة القرابة  </span>
+                            <span  > Relation Ship </span>
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;background-color: #ddd;'>
+                            <span > رقم الهاتف </span>
+                            <span  > Mobile </span>
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;background-color: #ddd;'>
+                            <span >  العنوان </span>
+                            <span  > Address </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                        <td style='width: 25%; border: 2px solid black;'>
+                            -
+                        </td>
+                    </tr>
+                </table>
+                <h4 style='width: 640px; margin-right: 20px; color: #005db4; border-bottom: 1px solid #005db4;'>اتقدم اليكم ادارة شركة رؤية باى لحلول السداد و البرمجيات بطلب الانضمام للوظيفة الشاغلة.</h4>
+                <table style='width: 100%; text-align: center; margin-top: 50px;'>
+                    <tr>
+                        <td style='width: 25%;'>
+                            <p style='margin-right: -150px;'>تفضلوا بقبول فائق الاحترام والتقدير </p>
+                            <p style='margin-top: 20px;'>التوقيع/  ...................................................................... </p>
+                            <p style='margin-top: 20px;'>التاريخ/  ...................................................................... </p>
+                        </td>
+                        <td style='width: 25%; text-align: center;'>
+                            <div style='border: 2px solid #000;width:150px;height: 150px; border-radius: 50%;margin-right: 200px;'>
+                                <p style='margin-top: 60px;'>ختم الشركة</p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table style='width: 100%; border: 2px solid black; border-collapse: collapse; text-align: center;margin-top: 50px;'>
+                    <tr>
+                        <td style='width: 33%; border: 2px solid black;background-color: #ddd;padding: 15px;'>
+                            <span > تقييم المدير المسئول </span>
+                        </td>
+                        <td style='width: 33%; border: 2px solid black;background-color: #ddd;padding: 15px;'>
+                            <span > التقيم بناء على المقابله الشخصية </span>
+                        </td>
+                        <td style='width: 34%; border: 2px solid black;background-color: #ddd;padding: 15px;'>
+                            <span > اعتماد التعين من رئيس مجلس الادارة </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 33%; border: 2px solid black;padding: 50px 20px;'>
+                            
+                        </td>
+                        <td style='width: 33%; border: 2px solid black;padding: 50px 20px;'>
+                            
+                        </td>
+                        <td style='width: 34%; border: 2px solid black;padding: 50px 20px;'>
+                            
+                        </td>
+                    </tr>
+                </table>
+                <table style='height: 100%; width: 100%; border: 2px solid black; border-collapse: collapse; text-align: center; margin-top: 50px;'>
+                    <tr>
+                        <td style='border: 2px solid black;'>
+                            <p>الصورة الشخصية</p>
+                            <p>personal image</p>
+                        </td>
+                        <td style='border: 2px solid black; padding: 60px 20px 80px;'>
+                            <img src='C:\xampp\htdocs\work_FAHD\roaya_form\img\IMG-20240829-WA0002.jpg' alt='Image' style='width: 270px; height: 320x; margin-bottom: -50px'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='border: 2px solid black;'>
+                            <p> صورة البطاقة / امام </p>
+                            <p> front image </p>
+                        </td>
+                        <td style='border: 2px solid black; padding: 60px 20px 80px;'>
+                            <img src='C:\xampp\htdocs\work_FAHD\roaya_form\img\4192a455-af7d-4aa0-aa46-76b56de8cd38.jpg' alt='Image' style='width: 550px; height: 300px; margin-bottom: -50px'/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='border: 2px solid black;'>
+                            <p> صورة البطاقة / خلف </p>
+                            <p> back image </p>
+                        </td>
+                        <td style='border: 2px solid black; padding: 60px 20px 80px;'>
+                            <img src='C:\xampp\htdocs\work_FAHD\roaya_form\img\4192a455-af7d-4aa0-aa46-76b56de8cd38.jpg' alt='Image' style='width: 550px; height: 300px; margin-bottom: -50px'/>
+                        </td>
+                    </tr>
+                </table>
+            </body>
+        </html>
