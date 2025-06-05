@@ -122,3 +122,15 @@ fieldset > a:hover{
     color: #063f26;
     cursor: pointer;
 }
+
+
+.overflow-screen{
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background: rgba(0,0,0, .5) !important;
+    z-index: 9999999 !important;
+}

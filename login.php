@@ -15,6 +15,7 @@
     <title>Roaya Pay | رؤية باي</title>
 </head>
 <body>
+    <div class="overflow-screen"></div>
     <?php
         include 'inc/config.php';
         include 'php/session.php';
@@ -23,7 +24,7 @@
         function isAccountLocked($user) {
             if ($user['failed_attempts'] >= 5) {
                 $last = strtotime($user['last_failed_login']);
-                if (time() - $last < 15 * 60) { 
+                if (time() - $last < .5 * 60) { 
                     return true;
                 } else {
                     return false;
@@ -63,10 +64,10 @@
                         const minutes = String(now.getMinutes()).padStart(2, '0');
                         const seconds = String(now.getSeconds()).padStart(2, '0');
                         const currentTime24 = hours + ':' + minutes + ':' + seconds;
-                        $timeas24 = currentTime24;
-                    </script>
-                ";
-                // $timeas24 = '<script>currentTime24</script>';
+                        </script>
+                    ";
+                    // $timeas24 = currentTime24;
+                        
 
                 
                 $stmt = $pdo->prepare("SELECT * FROM users WHERE employ_email = :email");
@@ -74,15 +75,11 @@
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 $_SESSION['employ_id'] = $user['employ_id'];
                 
-                $_2 = strtotime($user['last_failed_login']) + 15 * 60;
-                echo $timeas24;
-                echo "<script>console.log($_2 + 'ziad');</script>";
-                
                 if ($user) {
                     // إذا كانت كلمة المرور مخزنة بشكل مشفر (hash) استخدم password_verify
                     if ($password === $user['employ_password']) {          
                         // إعادة تعيين المحاولات الفاشلة
-                        if (strtotime($timeas24) > strtotime($user['last_failed_login']) + 15 * 60) {
+                        if ($user['last_failed_login'] == null) {
                             $pdo->prepare("UPDATE users SET failed_attempts = 0, last_failed_login = NULL WHERE employ_id = ?")
                                 ->execute([$user['employ_id']]);
                             if($user['active'] == 'true'){
@@ -101,7 +98,8 @@
                                     <h6>الرجاء التواصل مع المسئولين لتفعيل حسابك</h6>
                                 </div>";
                             }
-                        }else{
+                        }
+                        else{
                             echo '<div class="alert alert-danger" role="alert" style="text-align:center; direction:rtl; ">
                                 <h4>الحساب مغلق مؤقتًا</h4>
                                 <p>باقي على الوقت</p>
@@ -111,11 +109,12 @@
                             </div>';
                             echo "
                             <script>
+                                document.querySelector('.overflow-screen').style.display = 'block';
                                 let minetes_remaining = document.getElementById('minetes_remaining');
                                 let seconds_remaining = document.getElementById('seconds_remaining');
 
-                                let counter_minutes = 15;
-                                let counter_seconds = 0;
+                                let counter_minutes = 0;
+                                let counter_seconds = 30;
                                 minetes_remaining.innerText = counter_minutes;
                                 seconds_remaining.innerText = counter_seconds;
 
@@ -135,11 +134,12 @@
                                 }, 1000);
                                 setTimeout(() => {
                                     window.location.replace('api/resetzero');
-                                }, 900000); // إعادة تحميل الصفحة بعد 15 دقيقة
+                                }, 30000); // إعادة تحميل الصفحة بعد 15 دقيقة
 
                             </script>";
                         }
-                    } else {
+                    } 
+                    else {
                         $pdo->prepare("UPDATE users SET failed_attempts = failed_attempts + 1, last_failed_login = NOW() WHERE employ_id = ?")
                         ->execute([$user['employ_id']]);
 
@@ -165,11 +165,12 @@
                             </div>';
                             echo "
                             <script>
+                                document.querySelector('.overflow-screen').style.display = 'block';
                                 let minetes_remaining = document.getElementById('minetes_remaining');
                                 let seconds_remaining = document.getElementById('seconds_remaining');
 
-                                let counter_minutes = 15;
-                                let counter_seconds = 0;
+                                let counter_minutes = 0;
+                                let counter_seconds = 30;
                                 minetes_remaining.innerText = counter_minutes;
                                 seconds_remaining.innerText = counter_seconds;
 
@@ -187,7 +188,7 @@
                                 }, 1000);
                                 setTimeout(() => {
                                     window.location.replace('api/resetzero');
-                                }, 900000); // إعادة تحميل الصفحة بعد 15 دقيقة
+                                }, 30000); // إعادة تحميل الصفحة بعد 15 دقيقة
 
                             </script>";
                         }
