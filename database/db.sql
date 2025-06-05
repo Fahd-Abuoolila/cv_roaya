@@ -758,5 +758,6 @@ CREATE TABLE `users` (
     `job` varchar(100) NOT NULL,
     `active` varchar(100) NOT NULL,
     `failed_attempts` INT DEFAULT 0,
-    `last_failed_login` TIME
+    `last_failed_login` TIME,
+    `location` varchar(10) NOT NULL DEFAULT 'login'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

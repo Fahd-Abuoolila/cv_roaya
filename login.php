@@ -2,6 +2,9 @@
     header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
     header("Pragma: no-cache");
     header("Expires: 0");
+    include 'php/session.php';
+
+    require 'php/auth.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,10 +18,14 @@
     <title>Roaya Pay | رؤية باي</title>
 </head>
 <body>
-    <div class="overflow-screen"></div>
+    <div class="overflow-screen">
+        <div class='alert alert-info' role='alert' style='text-align:center; direction:rtl; '>
+            <h4 style='color:rgb(245, 74, 74);'> تحذير ! </h4>
+            <h6>الرجاء عدم اعادة تحميل للصفحة او الخروج منها حتى يتم رفع الحظر</h6>
+        </div>"
+    </div>
     <?php
         include 'inc/config.php';
-        include 'php/session.php';
         include 'php/db.php';
 
         function isAccountLocked($user) {
@@ -34,8 +41,8 @@
             }
         }
 
-        $emailfalse = '';
-        $passfalse = '';
+        @$emailfalse = '';
+        @$passfalse = '';
 
         @$email=$_POST['email'];
         @$password=$_POST['password'];
@@ -56,16 +63,16 @@
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if(isset($_POST['submit'])){
-                $timeas24 = '';
-                echo "
-                    <script>
-                        const now = new Date();
-                        const hours = String(now.getHours()).padStart(2, '0');
-                        const minutes = String(now.getMinutes()).padStart(2, '0');
-                        const seconds = String(now.getSeconds()).padStart(2, '0');
-                        const currentTime24 = hours + ':' + minutes + ':' + seconds;
-                        </script>
-                    ";
+                // $timeas24 = '';
+                // echo "
+                //     <script>
+                //         const now = new Date();
+                //         const hours = String(now.getHours()).padStart(2, '0');
+                //         const minutes = String(now.getMinutes()).padStart(2, '0');
+                //         const seconds = String(now.getSeconds()).padStart(2, '0');
+                //         const currentTime24 = hours + ':' + minutes + ':' + seconds;
+                //     </script>
+                // ";
                     // $timeas24 = currentTime24;
                         
 
@@ -73,13 +80,12 @@
                 $stmt = $pdo->prepare("SELECT * FROM users WHERE employ_email = :email");
                 $stmt->execute(['email' => $email]);
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                $_SESSION['employ_id'] = $user['employ_id'];
-                
+
                 if ($user) {
-                    // إذا كانت كلمة المرور مخزنة بشكل مشفر (hash) استخدم password_verify
+                    $_SESSION['employ_id'] = $user['employ_id'];
                     if ($password === $user['employ_password']) {          
                         // إعادة تعيين المحاولات الفاشلة
-                        if ($user['last_failed_login'] == null) {
+                        if ($user['last_failed_login'] == null || $user['failed_attempts'] <= 5) {
                             $pdo->prepare("UPDATE users SET failed_attempts = 0, last_failed_login = NULL WHERE employ_id = ?")
                                 ->execute([$user['employ_id']]);
                             if($user['active'] == 'true'){
@@ -88,9 +94,16 @@
                                     'employ_name' => $user['employ_name'],
                                     'email' => $user['employ_email'],
                                 ];
-                                session_regenerate_id(true); // حماية من session fixation
-    
+                                
+                                $_SESSION['loggedin'] = true;
+
+                                session_write_close();
                                 header("Location: index");
+                                echo "
+                                    <script>
+                                        location.replace('index')
+                                    </script>
+                                ";
                                 exit();
                             }else{
                                 echo"<div class='alert alert-warning' role='alert' style='text-align:center; direction:rtl; '>
@@ -98,14 +111,13 @@
                                     <h6>الرجاء التواصل مع المسئولين لتفعيل حسابك</h6>
                                 </div>";
                             }
-                        }
-                        else{
+                        }else{
                             echo '<div class="alert alert-danger" role="alert" style="text-align:center; direction:rtl; ">
                                 <h4>الحساب مغلق مؤقتًا</h4>
-                                <p>باقي على الوقت</p>
-                                <p id="minetes_remaining"></p>
-                                <p >دقيقة</p>
-                                <p >و <span id="seconds_remaining"></span> ثانية</p>
+                                <span>باقي على الوقت</span>
+                                <span id="minetes_remaining"></span>
+                                <span >دقيقة</span>
+                                <span >و <span id="seconds_remaining"></span> ثانية</span>
                             </div>';
                             echo "
                             <script>
@@ -114,14 +126,17 @@
                                 let seconds_remaining = document.getElementById('seconds_remaining');
 
                                 let counter_minutes = 0;
-                                let counter_seconds = 30;
+                                let counter_seconds = 60;
                                 minetes_remaining.innerText = counter_minutes;
                                 seconds_remaining.innerText = counter_seconds;
 
                                 console.log(counter_minutes, counter_seconds);
 
                                 setInterval(function() {
-                                    counter_minutes--;
+                                    --counter_minutes;
+                                    if (counter_minutes < 0) {
+                                        counter_minutes = 0;
+                                    }
                                     minetes_remaining.innerText = counter_minutes;
                                 }, 60000);
 
@@ -134,12 +149,11 @@
                                 }, 1000);
                                 setTimeout(() => {
                                     window.location.replace('api/resetzero');
-                                }, 30000); // إعادة تحميل الصفحة بعد 15 دقيقة
+                                }, 60000); // إعادة تحميل الصفحة بعد 15 دقيقة
 
                             </script>";
                         }
-                    } 
-                    else {
+                    }else {
                         $pdo->prepare("UPDATE users SET failed_attempts = failed_attempts + 1, last_failed_login = NOW() WHERE employ_id = ?")
                         ->execute([$user['employ_id']]);
 
@@ -158,10 +172,10 @@
                         if (isAccountLocked($user)) { // ماذال في الحظر
                             echo '<div class="alert alert-danger" role="alert" style="text-align:center; direction:rtl; ">
                                 <h4>الحساب مغلق مؤقتًا</h4>
-                                <p>باقي على الوقت</p>
-                                <p id="minetes_remaining"></p>
-                                <p >دقيقة</p>
-                                <p >و <span id="seconds_remaining"></span> ثانية</p>
+                                <span>باقي على الوقت</span>
+                                <span id="minetes_remaining"></span>
+                                <span >دقيقة</span>
+                                <span >و <span id="seconds_remaining"></span> ثانية</span>
                             </div>';
                             echo "
                             <script>
@@ -170,12 +184,17 @@
                                 let seconds_remaining = document.getElementById('seconds_remaining');
 
                                 let counter_minutes = 0;
-                                let counter_seconds = 30;
+                                let counter_seconds = 60;
                                 minetes_remaining.innerText = counter_minutes;
                                 seconds_remaining.innerText = counter_seconds;
 
+                                console.log(counter_minutes, counter_seconds);
+
                                 setInterval(function() {
-                                    counter_minutes--;
+                                    --counter_minutes;
+                                    if (counter_minutes < 0) {
+                                        counter_minutes = 0;
+                                    }
                                     minetes_remaining.innerText = counter_minutes;
                                 }, 60000);
 
@@ -188,7 +207,7 @@
                                 }, 1000);
                                 setTimeout(() => {
                                     window.location.replace('api/resetzero');
-                                }, 30000); // إعادة تحميل الصفحة بعد 15 دقيقة
+                                }, 60000); // إعادة تحميل الصفحة بعد 15 دقيقة
 
                             </script>";
                         }
@@ -212,6 +231,7 @@
                 ";
             }
         }
+        $_SESSION['location'] = 'login';
     ?>
     <div class="content">
         <div class="container">
@@ -227,6 +247,7 @@
                 </div>
             </div>
             <form method="POST" id="loginForm">
+                <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
                 <div>
                     <div>
                         <i class="fa-solid fa-user"></i>
@@ -247,31 +268,32 @@
             
             <?php
                 $_SESSION['email'] = $email; 
-                echo "<script>
-                const email = document.querySelector('#mail');
-                const password = document.querySelector('#pass_1');
+            echo "
+                <script>
+                    const email = document.querySelector('#mail');
+                    const password = document.querySelector('#pass_1');
 
-                email.value = '$email';
-                password.value = '$password';
+                    email.value = '$email';
+                    password.value = '$password';
 
-                if('$passfalse' == 'false'){
-                    password.style.border = '1px solid red';
-                    password.addEventListener('focus', function(){
-                        password.style.boxShadow = '4px 4px 0 #dc3545';
-                    });
-                    password.addEventListener('blur', function() {
-                        password.style.boxShadow = 'none';
-                    });
-                }else if('$emailfalse' == 'false'){
-                    email.style.border = '1px solid red';
-                    email.addEventListener('focus', function(){
-                        email.style.boxShadow = '4px 4px 0 #dc3545';
-                    });
-                    email.addEventListener('blur', function() {
-                        email.style.boxShadow = 'none';
-                    });
-                }
-            </script>
+                    if('$passfalse' == 'false'){
+                        password.style.border = '1px solid red';
+                        password.addEventListener('focus', function(){
+                            password.style.boxShadow = '4px 4px 0 #dc3545';
+                        });
+                        password.addEventListener('blur', function() {
+                            password.style.boxShadow = 'none';
+                        });
+                    }else if('$emailfalse' == 'false'){
+                        email.style.border = '1px solid red';
+                        email.addEventListener('focus', function(){
+                            email.style.boxShadow = '4px 4px 0 #dc3545';
+                        });
+                        email.addEventListener('blur', function() {
+                            email.style.boxShadow = 'none';
+                        });
+                    }
+                </script>
             ";
             ?>
         </div>

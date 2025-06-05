@@ -1,61 +1,13 @@
-<?php   
-    // include 'php/session.php';
-
-    // if (!isset($_SESSION['employ_name'])) {
-    //     header("Location: login");
-    //     exit();
-    // }
-
-    // $employ_data = $_SESSION['employ_name'];
-    
-    // if (!isset($_COOKIE['login'])) {
-    //     if ($_POST['employid'] != $employ_data['employ_id']) {
-    //         header("Location: login");
-    //         exit();
-    //     }
-    // }
-
-    // session_start();
-
-    // حماية من اختطاف الجلسة
-    // function isSessionHijacked() {
-    //     if (!isset($_SESSION['user_agent']) || !isset($_SESSION['ip_address'])) {
-    //         return true;
-    //     }
-    //     if ($_SESSION['user_agent'] !== $_SERVER['HTTP_USER_AGENT']) {
-    //         return true;
-    //     }
-    //     if ($_SESSION['ip_address'] !== $_SERVER['REMOTE_ADDR']) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
-    // // تأمين الجلسة عند تسجيل الدخول (ضعها هناك أيضًا)
-    // if (!isset($_SESSION['initiated'])) {
-    //     session_regenerate_id(true);
-    //     $_SESSION['initiated'] = true;
-    //     $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-    //     $_SESSION['ip_address'] = $_SERVER['REMOTE_ADDR'];
-    //     $_SESSION['last_activity'] = time();
-    // }
-
-    // // التحقق من صلاحية الجلسة
-    // $timeout_duration = 900; // 15 دقيقة
-    // if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $timeout_duration) {
-    //     session_unset();
-    //     session_destroy();
-    //     header("Location: login?timeout=1");
-    //     exit;
-    // }
-    // $_SESSION['last_activity'] = time(); // تجديد الوقت
-
-    // if (!isset($_SESSION['user_id']) || isSessionHijacked()) {
-    //     session_unset();
-    //     session_destroy();
-    //     header("Location: login");
-    //     exit;
-    // }
+<?php
+    require 'php/auth_check.php';
+    // include "php/session.php";
+    // Start session at the very top to make it available everywhere
+    if (!isset($_SESSION['employ']['employ_id']) ) {
+        session_unset();
+        session_destroy();
+         header("Location: login");
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang='ar'>
@@ -77,9 +29,13 @@
     <body>
         <?php
             include 'inc/config.php';
+            include 'php/db.php';
+
             $IDuse = $_SESSION['employ']['employ_id'];
-            $item = mysqli_query($conection, "SELECT * FROM users WHERE employ_id=$IDuse");
-            $employ = mysqli_fetch_array($item);
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE employ_id = :id");
+            $stmt->execute(['id' => $IDuse]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            mysqli_query($conection, "UPDATE users SET location='index' WHERE employ_id=$IDuse");
         ?>
         <!-- header -->
         <div class='header'>
@@ -99,18 +55,18 @@
                                         <a class='dropdown-item' id="name" onclick="copyToClipboard(this.id)">
                                             <i class="fa-regular fa-user"></i>
                                             <p class='mx-2'>
-                                                <?php echo $employ['employ_name']?>
+                                                <?php echo $user['employ_name']?>
                                             </p>
                                         </a>
                                         <div class='dropdown-divider m-0'></div>
                                         <a class='dropdown-item' id="email" onclick="copyToClipboard(this.id)">
                                             <i class="fa-regular fa-envelope"></i>
                                             <p class='mx-2'>
-                                                <?php echo $employ['employ_email']?>
+                                                <?php echo $user['employ_email']?>
                                             </p>
                                         </a>
                                         <div class='dropdown-divider m-0'></div>
-                                        <a class='dropdown-item bg-danger text-center text-light' style="cursor: pointer; border-radius: 0 0 3.5px 3.5px;" id="Roayaut" onclick="Roayaut()">
+                                        <a class='dropdown-item bg-danger text-center text-light' style="cursor: pointer; border-radius: 0 0 3.5px 3.5px;" id="Roayaut" onclick=>
                                             <i class="fa-solid fa-unlock-keyhole"></i>
                                             <span class='mt-2'>
                                                 Log Out
@@ -588,6 +544,14 @@
             name.innerHTML = "<?php echo $employ['employ_name']?>";
         </script>
         <script>
+            // منع الرجوع للصفحة السابقة
+            if (window.history && window.history.pushState) {
+                window.history.pushState(null, null, window.location.href);
+                window.onpopstate = function () {
+                    window.history.pushState(null, null, window.location.href);
+                };
+            }
+
             if(<?php echo $employ['ability']?> == true){
                 document.querySelector('.settings').style.display = 'block';
             }else{
