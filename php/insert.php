@@ -31,19 +31,19 @@
         $frontOFcard_location = !empty($frontOFcard['tmp_name']) ? $frontOFcard['tmp_name'] : null;
         $extension1 = pathinfo($frontOFcard['name'], PATHINFO_EXTENSION);
         $frontOFcard_name = $full_name . 'frontOFcard.' . $extension1;
-        $frontOFcard_up = $frontOFcard_name ?  $frontOFcard_name : null;
+        $frontOFcard_up = $frontOFcard_name ?  '../uploads/' . $frontOFcard_name : null;
         // Process backOFcard
         $backOFcard = $_FILES['backOFcard'];
         $backOFcard_location = !empty($backOFcard['tmp_name']) ? $backOFcard['tmp_name'] : null;
         $extension2 = pathinfo($backOFcard['name'], PATHINFO_EXTENSION);
         $backOFcard_name = $full_name . 'backOFcard.' . $extension2;
-        $backOFcard_up = $backOFcard_name ?  $backOFcard_name : null;
+        $backOFcard_up = $backOFcard_name ?  '../uploads/' . $backOFcard_name : null;
         // Process photoOFuser
         $photoOFuser = $_FILES['photoOFuser'];
         $photoOFuser_location = !empty($photoOFuser['tmp_name']) ? $photoOFuser['tmp_name'] : null;
         $extension3 = pathinfo($photoOFuser['name'], PATHINFO_EXTENSION);
         $photoOFuser_name = $full_name . 'photoOFuser.' . $extension3;
-        $photoOFuser_up = $photoOFuser_name ? $photoOFuser_name : null;
+        $photoOFuser_up = $photoOFuser_name ? '../uploads/' . $photoOFuser_name : null;
         // table 2
         $numberOFphone_1 = trim($_POST['numberOFphone_1']);
         $numberOFphone_2 = trim($_POST['numberOFphone_2']);

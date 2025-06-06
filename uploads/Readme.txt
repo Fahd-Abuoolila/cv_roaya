@@ -1,3 +1,3 @@
-this folder for upload the files.
+this folder for uploads files.
 
 Please, keep this folder.
