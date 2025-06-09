@@ -25,24 +25,24 @@ div  .select{
     height: 38px;
     width: 100px;
     color: #000;
-    /* border-radius: 20px 0 0 20px; */
     outline: none;
     border: none;
 }
 div  .select + .btn{
     height: 38px !important;
     border-radius: 20px 0 0 20px;
-    background: #0056B3 !important;
-    border-color: #0056B3;
+    background: #5aaa57 !important;
+    border-color: #5aaa57;
+    color: #fff;
 }
 div  .select + .btn:focus{
-    box-shadow: 0 0 0 0.2rem #0056B3 !important;
+    box-shadow: 0 0 0 0.2rem #c3cfd9 !important;
 }
 .btn-success:not(:disabled):not(.disabled):active{
-    border-color: #0056B3 !important;
+    border-color: #c3cfd9 !important;
 }
 .btn-success:not(:disabled):not(.disabled):active:focus{
-    box-shadow: 0 0 0 0.2rem #0056B3 !important;
+    box-shadow: 0 0 0 0.2rem #c3cfd9 !important;
 }
 .select  option{
     color: #000;
@@ -81,8 +81,8 @@ table tbody tr{
     transition: all .3s;
 }
 table tbody tr:hover{
-    background-color: #0056B3 !important;
-    color: var(--SecondColorBack);
+    background-color: #5aaa579a !important;
+    color: #000 !important;
 }
 .person-image .form-group{
     display: block;
@@ -114,4 +114,15 @@ table tbody tr:hover{
     .col-sm-auto.inputs-group .form-group{
         width: 50%;
     }
+}
+select option:target,
+select option:active,
+select option:hover,
+select option:focus-within,
+select option:focus-visible,
+select option:focus,
+select option::selection,
+select option:checked {
+    background: #5aaa57 !important; /* أخضر */
+    color: #fff;
 }

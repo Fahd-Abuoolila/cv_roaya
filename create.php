@@ -133,12 +133,12 @@
                         <label for="address">محل السكن</label>
                     </div>
                     <div class="field">
-                        <select type="text" id="governorateSelect" name="governorateSelect" class="input-group" placeholder="" style="width: 150px;" onchange="updateCenters()" required>
+                        <select type="text" id="governorateSelect" name="governorateSelect" class="input-group" placeholder="" style="width: 151px;" onchange="updateCenters()" required>
                         </select>
                         <label for="governorateSelect">اختر محافظة </label>
                     </div>
                     <div class="field">
-                        <select type="text" id="centerSelect" name="centerSelect" class="input-group" placeholder="" style="width: 150px;" required></select>
+                        <select type="text" id="centerSelect" name="centerSelect" class="input-group" placeholder="" style="width: 151px;" required></select>
                         <label for="centerSelect">اختر مركز / حي </label>
                     </div>
                     <div class="field">
@@ -164,8 +164,8 @@
                         <label for="university_1">اسم الجامعة 1</label>
                     </div>
                     <div class="field">
-                        <input type="text" id="locition_1" name="locition_1" class="input-group" placeholder="" required>
-                        <label for="locition_1">مكانها 1</label>
+                        <input type="text" id="university_locition_1" name="university_locition_1" class="input-group" placeholder="" required>
+                        <label for="university_locition_1">مكانها 1</label>
                     </div>
                     <div class="field">
                         <input type="text" id="num_of_year_1" name="num_of_year_1" class="input-group" placeholder="" required>
@@ -198,8 +198,8 @@
                         <label for="university_2">اسم الجامعة 2</label>
                     </div>
                     <div class="field">
-                        <input type="text" id="locition_2" name="locition_2" class="input-group" placeholder="">
-                        <label for="locition_2">مكانها 2</label>
+                        <input type="text" id="university_locition_2" name="university_locition_2" class="input-group" placeholder="">
+                        <label for="university_locition_2">مكانها 2</label>
                     </div>
                     <div class="field">
                         <input type="text" id="num_of_year_2" name="num_of_year_2" class="input-group" placeholder="">
@@ -232,8 +232,8 @@
                         <label for="university_3">اسم الجامعة 3</label>
                     </div>
                     <div class="field">
-                        <input type="text" id="locition_3" name="locition_3" class="input-group" placeholder="">
-                        <label for="locition_3">مكانها 3</label>
+                        <input type="text" id="university_locition_3" name="university_locition_3" class="input-group" placeholder="">
+                        <label for="university_locition_3">مكانها 3</label>
                     </div>
                     <div class="field">
                         <input type="text" id="num_of_year_3" name="num_of_year_3" class="input-group" placeholder="">
@@ -634,7 +634,7 @@
             </div>
 
             <div class="employee" id="person_1">
-                <span> اشخاص  بأمكاننا الأتصال بهم وقت الضرورة 1</span>
+                <span> اشخاص  بأمكاننا الأتصال بهم وقت الضرورة </span>
                 <div class="fields">
                     <div class="field">
                         <input type="text" id="person_name_1" name="person_name_1" class="input-group" placeholder="" required>
@@ -690,7 +690,7 @@
             "الدقهلية": ["المنصورة", "ميت غمر", "طلخا", "بلقاس", "السنبلاوين", "دكرنس", "شربين", "أجا", "منية النصر", "بني عبيد", "تمي الأمديد", "الجمالية", "المطرية", "الكردي", "ميت سلسيل", "نبروه"],
             "البحيرة": ["دمنهور", "كفر الدوار", "إيتاي البارود", "أبو حمص", "المحمودية", "رشيد", "إدكو", "حوش عيسى", "الدلنجات", "شبراخيت", "كوم حمادة", "بدر", "وادي النطرون", "النوبارية الجديدة"],
             "الغربية": ["طنطا", "المحلة الكبرى", "زفتى", "كفر الزيات", "السنطة", "قطور", "بسيون", "سمنود"],
-            "المنوفية": ["أشمون", "شبين الكوم", "السادات", "منوف", "قويسنا", "الباجور", "تلا", "بركة السبع", "سرس الليان"],
+            "المنوفية": ["أشمون", "الباجور", "بركة السبع", "تلا", "الشهداء", "شبين الكوم", "قويسنا", "منوف", "سرس الليان", "السادات", "سبك الأحد", "سبك", "سنتريس", "دنشواي", "زاوية رزين", "كفر داود"],
             "الشرقية": ["الزقازيق", "العاشر من رمضان", "فاقوس", "أبو كبير", "بلبيس", "منيا القمح", "ههيا", "الإبراهيمية", "ديرب نجم", "كفر صقر", "أولاد صقر", "الحسينية", "صان الحجر", "القنايات", "مشتول السوق", "القرين"],
             "القليوبية": ["بنها", "شبرا الخيمة", "طوخ", "قليوب", "الخانكة", "القناطر الخيرية", "كفر شكر", "العبور", "الخصوص", "الحي الثاني", "الحي الثالث"],
             "كفر الشيخ": ["كفر الشيخ", "دسوق", "بلطيم", "الحامول", "بيلا", "سيدي سالم", "مطوبس", "فوه", "قلين", "الرياض", "برج البرلس"],

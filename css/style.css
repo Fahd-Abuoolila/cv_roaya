@@ -38,6 +38,10 @@ body {
 }
 
 /* alert */
+svg.svg-inline--fa.fa-bars-staggered {
+    color: #000;
+    font-size: 24px;
+}
 #alert {
     position: fixed;
     bottom: 10px;
@@ -50,7 +54,7 @@ body {
 
 /* header */
 .header {
-    background: var(--MainColorBack);
+    background: #fff;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -58,13 +62,12 @@ body {
     width: 100%;
     height: 56px;
     padding: 3px 0;
-    border-bottom: 1px solid #001;
+    border-bottom: 1px solid #33333324;
 }
 
 .header a img {
-    height: 62px;
-    width: 165px;
-    margin: -10px 10px 0;
+    width: 180px;
+    margin: -12px 10px 0;
 }
 
 .header>div {
@@ -88,7 +91,7 @@ body {
 
 .header>div>div#nav {
     width: calc(100% - 260px);
-    background: var(--MainColorBack);
+    background-color: #fff;
     position: absolute;
     top: 0px;
     left: 0;
@@ -140,10 +143,7 @@ body {
 }
 
 .header>div>div#nav>.navbar-collapse>div>.dropdowns button.btn.dropdown-toggle {
-    padding: 2px 7px;
-    box-shadow: none !important;
     background: transparent;
-    color: #fff !important;
 }
 
 .header>div>div#nav>.navbar-collapse>div>.dropdowns button.btn.dropdown-toggle::after {
@@ -203,6 +203,7 @@ body {
 
 .content p {
     margin: 0 !important;
+    color: #000;
 }
 
 .show-board {
@@ -213,7 +214,7 @@ body {
 }
 
 .title-info {
-    background: #0056B3;
+    background: #5aaa57;
     padding: 6px 10px;
     display: flex;
     align-items: center;
@@ -284,7 +285,7 @@ body {
         /* display: none; */
         position: absolute;
         top: 56px;
-        background: var(--MainColorBack);
+        background-color: #fff;
         width: 100vw;
         margin: 0 !important;
     }
@@ -318,12 +319,12 @@ body {
         background: #fff;
     }
 
-    .header>div>div#nav>.IconMenu>span.Active {
+    .header>div>div#nav>.IconMenu>span.active {
         width: 12.5px;
         transition: .3s;
     }
 
-    .header>div>div#nav>.IconMenu:hover>span.Active {
+    .header>div>div#nav>.IconMenu:hover>span.active {
         width: 25px;
     }
 
@@ -361,7 +362,7 @@ table {
 
 table th,
 tr {
-    color: var(--MainColorBack);
+    color: #000;
 }
 
 table tr:not(.no):hover {
@@ -395,7 +396,7 @@ table .dropdown-menu.show {
     padding: 20px;
     margin-top: 25px;
     border-radius: 15px;
-    width: 88% !important;
+    width: 100% !important;
 }
 
 .container>.employee {
@@ -459,4 +460,10 @@ th {
 .container>table tr td:nth-child(2)>img {
     width: 200px;
     height: 200px;
+}
+select option:hover,
+select option:focus,
+select option:checked {
+    background: #5aaa57 !important; /* أخضر */
+    color: #fff;
 }

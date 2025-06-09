@@ -90,7 +90,7 @@
             <div class='menu'>
                 <ul>        
                     <li class='li'>
-                        <a href='#' class='active'>
+                        <a href='#'>
                             <i class="fa-solid fa-person-walking-luggage"></i>
                             <span>طلبات التوظيف</span>
                             <i class='fa fa-angle-left'></i>
@@ -111,7 +111,7 @@
                         </ul>
                     </li>
                     <li class='li'>
-                        <a href='#' class=''>
+                        <a href='#' class='active'>
                             <i class="fa-solid fa-person-hiking"></i>
                             <span>قائمة المعينيين</span>
                             <i class='fa fa-angle-left'></i>

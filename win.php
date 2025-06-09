@@ -56,19 +56,29 @@
         require_once('php/mail/mail.php');
         $mail->setFrom('fahdabuoolila.px@gmail.com', 'ROAYA PAY');
         $mail->addAddress($useremail); 
-        // $mail->addAddress('youssefmohamedz90334@gmail.com'); 
 
         // $mail->SMTPDebug = 3; // أو 3 للحصول على تفاصيل أكثر
         $mail->Subject = 'طلب التوظيف في شركة رؤية باي';
-        $mail->Body  = '<body style="direction: rtl;">';
-        $mail->Body .= 'السلام عليكم.<br>';
-        $mail->Body .= '<h2>نرحب بكم في شركة رؤية باي</h2>';
+        $mail->Body  = '<html>';
+        $mail->Body .= '<head>';
+        $mail->Body .= '<style>';
+        $mail->Body .= "@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');";
+        $mail->Body .= '</style>';
+        $mail->Body .= '</style>';
+        $mail->Body .= '</head>';
+        $mail->Body .= '<body style="direction: rtl;">';
+        $mail->Body .= '<h2>السلام عليكم</h2>';
+        $mail->Body .= '<br>';
+        $mail->Body .= '<div style="font-size: 18px; font-weight: 900;">';
+        $mail->Body .= '<h3>نرحب بكم في شركة رؤية باي لحلول السداد و البرمجيات</h3>';
         $mail->Body .= '<p>الأستاذ/ة</p>' . '<p>'. $first_name . ' ' . $father_name . ' ' . $grandpa_name . ' ' . $family_name .'</p>';
         $mail->Body .= 'تم استلام طلب التوظيف الخاص بك بنجاح.<br>';
         $mail->Body .= 'سيتم الرد عليك قريبأ و انتظر مكالمة منا او رسالة بريد الكتروني او رسالة على تطبيق الواتساب<br>';
         $mail->Body .= 'شكراً لسيادتكم.<br>';
+        $mail->Body .= ' </div>';
         $mail->Body .= '<img src="https://fahd-abuoolila.github.io/roaya_photo/The_End_Logo.png" alt="Roaya Pay" style="width: 100%; height: auto;">';
         $mail->Body .= '</body>';
+        $mail->Body .= '</html>';
         $mail->send();
     }
 ?>

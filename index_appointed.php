@@ -90,7 +90,7 @@
             <div class='menu'>
                 <ul>        
                     <li class='li'>
-                        <a href='#' class='active'>
+                        <a href='#'>
                             <i class="fa-solid fa-person-walking-luggage"></i>
                             <span>طلبات التوظيف</span>
                             <i class='fa fa-angle-left'></i>
@@ -111,7 +111,7 @@
                         </ul>
                     </li>
                     <li class='li'>
-                        <a href='#' class=''>
+                        <a href='#' class='active'>
                             <i class="fa-solid fa-person-hiking"></i>
                             <span>قائمة المعينيين</span>
                             <i class='fa fa-angle-left'></i>
@@ -464,20 +464,6 @@
                                                                 <input type='hidden' id='id' name='id' value='$row[employ_id]'>
                                                                 <button class='btn btn-primary w-100 my-1'>
                                                                     عــرض
-                                                                </button>
-                                                            </form>
-                                                            <form action='php/appointed?employid=$employ[employ_id]' type='submit' method='post'>
-                                                                <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <button class='btn btn-success w-100 my-1'>
-                                                                    تعيين
-                                                                </button>
-                                                            </form>
-                                                            <form action='php/postpone?employid=$employ[employ_id]' type='submit' method='post'>
-                                                                <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <button class='btn btn-dark text-white w-100 my-1'>
-                                                                    تأجيل
                                                                 </button>
                                                             </form>
                                                             <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal'>

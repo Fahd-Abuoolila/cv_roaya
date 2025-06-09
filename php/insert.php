@@ -55,28 +55,28 @@
         // table 3
         $academic_qualification_1 = trim($_POST['academic_qualification_1']);
         $university_1 = trim($_POST['university_1']);
-        $locition_1 = trim($_POST['locition_1']);
+        $university_locition_1 = trim($_POST['university_locition_1']);
         $num_of_year_1 = trim($_POST['num_of_year_1']);
         $gpa_1 = trim($_POST['gpa_1']);
         $year_graduated_1 = trim($_POST['year_graduated_1']);
         // table 4
         $academic_qualification_2 = trim($_POST['academic_qualification_2']);
         $university_2 = trim($_POST['university_2']);
-        $locition_2 = trim($_POST['locition_2']);
+        $university_locition_2 = trim($_POST['university_locition_2']);
         $num_of_year_2 = trim($_POST['num_of_year_2']);
         $gpa_2 = trim($_POST['gpa_2']);
         $year_graduated_2 = trim($_POST['year_graduated_2']);
         if($academic_qualification_2 == "" || $academic_qualification_2 == null || $academic_qualification_2 == "null" || $academic_qualification_2 == "undefined" || $academic_qualification_2 == ' '){
             $academic_qualification_2 = '-';
             $university_2 = '-';
-            $locition_2 = '-';
+            $university_locition_2 = '-';
             $num_of_year_2 = '-';
             $gpa_2 = '-';
             $year_graduated_2 = '-';
         }else{
             $academic_qualification_2 = trim($_POST['academic_qualification_2']);
             $university_2 = trim($_POST['university_2']);
-            $locition_2 = trim($_POST['locition_2']);
+            $university_locition_2 = trim($_POST['university_locition_2']);
             $num_of_year_2 = trim($_POST['num_of_year_2']);
             $gpa_2 = trim($_POST['gpa_2']);
             $year_graduated_2 = trim($_POST['year_graduated_2']);
@@ -84,21 +84,21 @@
         // table 5
         $academic_qualification_3 = trim($_POST['academic_qualification_3']);
         $university_3 = trim($_POST['university_3']);
-        $locition_3 = trim($_POST['locition_3']);
+        $university_locition_3 = trim($_POST['university_locition_3']);
         $num_of_year_3 = trim($_POST['num_of_year_3']);
         $gpa_3 = trim($_POST['gpa_3']);
         $year_graduated_3 = trim($_POST['year_graduated_3']);
         if($academic_qualification_3 == "" || $academic_qualification_3 == null || $academic_qualification_3 == "null" || $academic_qualification_3 == "undefined" || $academic_qualification_3 == ' '){
             $academic_qualification_3 = '-';
             $university_3 = '-';
-            $locition_3 = '-';
+            $university_locition_3 = '-';
             $num_of_year_3 = '-';
             $gpa_3 = '-';
             $year_graduated_3 = '-';
         }else{
             $academic_qualification_3 = trim($_POST['academic_qualification_3']);
             $university_3 = trim($_POST['university_3']);
-            $locition_3 = trim($_POST['locition_3']);
+            $university_locition_3 = trim($_POST['university_locition_3']);
             $num_of_year_3 = trim($_POST['num_of_year_3']);
             $gpa_3 = trim($_POST['gpa_3']);
             $year_graduated_3 = trim($_POST['year_graduated_3']);
@@ -329,19 +329,19 @@
                 employ_email, 
                 academic_qualification_1, 
                 university_1,
-                locition_1, 
+                university_locition_1, 
                 num_of_years_1, 
                 gpa_1, 
                 year_graduated_1, 
                 academic_qualification_2, 
                 university_2, 
-                locition_2, 
+                university_locition_2, 
                 num_of_years_2, 
                 gpa_2, 
                 year_graduated_2, 
                 academic_qualification_3, 
                 university_3, 
-                locition_3, 
+                university_locition_3, 
                 num_of_years_3, 
                 gpa_3, 
                 year_graduated_3, 
@@ -443,19 +443,19 @@
                 '$useremail', 
                 '$academic_qualification_1', 
                 '$university_1',
-                '$locition_1', 
+                '$university_locition_1', 
                 '$num_of_year_1', 
                 '$gpa_1', 
                 '$year_graduated_1', 
                 '$academic_qualification_2', 
                 '$university_2', 
-                '$locition_2', 
+                '$university_locition_2', 
                 '$num_of_year_2', 
                 '$gpa_2', 
                 '$year_graduated_2', 
                 '$academic_qualification_3', 
                 '$university_3', 
-                '$locition_3', 
+                '$university_locition_3', 
                 '$num_of_year_3', 
                 '$gpa_3', 
                 '$year_graduated_3', 

@@ -65,7 +65,7 @@
                                             </p>
                                         </a>
                                         <div class='dropdown-divider m-0'></div>
-                                        <a class='dropdown-item bg-danger text-center text-light' style="cursor: pointer; border-radius: 0 0 3.5px 3.5px;" id="Roayaut" onclick=>
+                                        <a class='dropdown-item bg-danger text-center text-light' style="cursor: pointer; border-radius: 0 0 3.5px 3.5px;" id="Roayaut">
                                             <i class="fa-solid fa-unlock-keyhole"></i>
                                             <span class='mt-2'>
                                                 Log Out

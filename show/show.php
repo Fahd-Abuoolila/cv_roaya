@@ -43,7 +43,7 @@
         <div class='header'>
             <div>
                 <a href='../index' class='navbar-brand'>
-                    <img src='../img/logo.png' alt='' draggable='false'>
+                    <img src='../img/Roaya.png' alt='' draggable='false'>
                 </a>
                 <div id='nav'> 
                     <div class='collapse navbar-collapse mx-2'>
@@ -93,8 +93,8 @@
             <div class='menu'>
                 <ul>        
                     <li class='li'>
-                        <a href='#' class=''>
-                            <i class='fa-solid fa-parachute-box'></i>
+                        <a href='#'>
+                            <i class="fa-solid fa-person-walking-luggage"></i>
                             <span>طلبات التوظيف</span>
                             <i class='fa fa-angle-left'></i>
                         </a>
@@ -114,8 +114,8 @@
                         </ul>
                     </li>
                     <li class='li'>
-                        <a href='#' class=''>
-                            <i class='fa-solid fa-employs-line'></i>
+                        <a href='#' class='active'>
+                            <i class="fa-solid fa-person-hiking"></i>
                             <span>قائمة المعينيين</span>
                             <i class='fa fa-angle-left'></i>
                         </a>
@@ -135,7 +135,7 @@
                         </ul>
                     </li>
                     <li class='li'>
-                        <a href='#' class='active'>
+                        <a href='#'>
                             <i class="fa-solid fa-signs-post"></i>
                             <span>قائمة المؤجلين</span>
                             <i class='fa fa-angle-left'></i>
@@ -157,7 +157,7 @@
                     </li>
                     <li class='settings'>
                         <a href='../settings?employid=<?php echo $user['employ_id']?>&mood=create'>
-                            <i class='fa fa-cog'></i>
+                            <i class="fa-solid fa-gear"></i>
                             <span>الاعدادات</span>
                         </a>
                     </li>
@@ -168,7 +168,7 @@
                 <div class='title-info'>
                     <p>بيانات الموظفين</p>    
                     <div class='btns-export-group'>
-                        <button class='btn export mx-2' id="export">التصدير الي pdf</butto>
+                        <button class='btn export mx-2' id="export">التصدير الي pdf</button>
                     </div>
                 </div>
                 <form novalidate>
@@ -184,9 +184,9 @@
                     <div class='container' id="employee_specific" name='employee_specific'>
                         <div>
                             <p class='title text-dark'>
-                                شــركـة ثقــة لخــدمـات الـدفـع الإلكـترونـي و الحــلول المــتكامـلة ش . م . م
+                                شركة رؤية باي لحلول السداد و البرمجيات
                             </p>
-                            <img src='../img/Roaya.png' alt="" draggable='false'>
+                            <img src='../img/Roaya_icon.png' alt="" draggable='false'>
                         </div>
                         <span>
                             الإستمارة الإلكترونية للموظف
@@ -207,7 +207,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    صورة الموظف
+                                    الرقم القومي
                                 </td>
                                 <td>
                                     <?="$data[national_id]"?>
@@ -215,7 +215,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    البريد الإلكتروني
+                                    تاريخ الإصدار
                                 </td>
                                 <td>
                                     <?php echo $data['date_of_issue']?>
@@ -223,7 +223,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    الوظيفة المطلوبة
+                                    مكان الإصدار
                                 </td>
                                 <td>
                                     <?php echo $data['place_of_issue']?>
@@ -231,7 +231,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    الموقف من التجنيد
+                                    الجنسية
                                 </td>
                                 <td>
                                     <?php echo $data['nationality']?>
@@ -239,7 +239,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    الجنسية
+                                    مكان الميلاد
                                 </td>
                                 <td>
                                     <?php echo $data['place_of_birth']?>
@@ -247,7 +247,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    الديانة
+                                    تاريخ الميلاد
                                 </td>
                                 <td>
                                     <?php echo $data['date_of_birth']?>
@@ -255,7 +255,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    الحالة الإجتماعية
+                                    الرقم التأميني
                                 </td>
                                 <td>
                                     <?php echo $data['insurance_num']?>
@@ -263,7 +263,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    تاريخ الميلاد
+                                    الموقف من التجنيد
                                 </td>
                                 <td>
                                     <?php echo $data['conscription']?>
@@ -271,7 +271,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    محل الميلاد
+                                    الحالة الإجتماعية
                                 </td>
                                 <td>
                                     <?php echo $data['marital_status']?>
@@ -279,7 +279,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    العنوان
+                                    عدد الابناء
                                 </td>
                                 <td>
                                     <?php echo $data['Num_of_children']?>
@@ -287,18 +287,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    شارع
+                                    الوظيفة المطلوبة
                                 </td>
                                 <td>
                                     <?php echo $data['job_required']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    صورة شخصية 
-                                </td>
-                                <td class='d-flex justify-content-center'>
-                                    <img class='' src='../uploads/<?php echo $data['photoOFuser_up']?>'>
                                 </td>
                             </tr>
                             <tr>
@@ -312,7 +304,22 @@
                             </tr>
                             <tr>
                                 <td>
-                                    العنوان
+                                    صورة شخصية 
+                                </td>
+                                <td class='d-flex justify-content-center'>
+                                    <img class='' src='../uploads/<?php echo $data['photoOFuser_up']?>'>
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr class="no">
+                                <th colspan='12'>
+                                    المعلومات الإضافية
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    رقم الهاتف 1
                                 </td>
                                 <td>
                                     <?php echo $data['number_tel_1']?>
@@ -320,47 +327,47 @@
                             </tr>
                             <tr>
                                 <td>
-                                    العنوان
+                                    رقم الهاتف 2
                                 </td>
                                 <td>
                                     <?php echo $data['number_tel_2']?>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    العنوان
+                                <td >
+                                    محل السكن
                                 </td>
                                 <td>
                                     <?php echo $data['place_of_residence']?>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    العنوان
+                                <td >
+                                    المحافظة
                                 </td>
                                 <td>
                                     <?php echo $data['governorate']?>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    العنوان
+                                <td >
+                                    مركز / حي
                                 </td>
                                 <td>
                                     <?php echo $data['centre']?>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    العنوان
+                                <td >
+                                    الرمز البريدي
                                 </td>
                                 <td>
                                     <?php echo $data['area_code']?>
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    العنوان
+                                <td >
+                                    البريد الإلكتروني
                                 </td>
                                 <td>
                                     <?php echo $data['employ_email']?>
@@ -370,12 +377,12 @@
                         <table>
                             <tr class="no">
                                 <th colspan='12'>
-                                    1 المؤهلات العملية
+                                    المؤهلات العلمية 1
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    جهة الدراسة
+                                    المؤهل العلمي 1
                                 </td>
                                 <td>
                                     <?php echo $data['academic_qualification_1']?>
@@ -383,7 +390,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    التخصص
+                                    اسم الجامعة 1
                                 </td>
                                 <td>
                                     <?php echo $data['university_1']?>
@@ -391,7 +398,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    سنه التخرج
+                                    مكانها 1
                                 </td>
                                 <td>
                                     <?php echo $data['locition_1']?>
@@ -399,7 +406,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    المؤهل الدراسي
+                                    مده الدراسة 1
                                 </td>
                                 <td>
                                     <?php echo $data['num_of_years_1']?>
@@ -407,7 +414,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    المؤهل الدراسي
+                                    المعدل التراكمي 1
                                 </td>
                                 <td>
                                     <?php echo $data['gpa_1']?>
@@ -415,7 +422,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    المؤهل الدراسي
+                                    سنه التخرج 1
                                 </td>
                                 <td>
                                     <?php echo $data['year_graduated_1']?>
@@ -425,12 +432,12 @@
                         <table>
                             <tr class="no">
                                 <th colspan='12'>
-                                    2 المؤهلات العملية
+                                    المؤهلات العلمية 2
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    جهة الدراسة
+                                    المؤهل العلمي 2
                                 </td>
                                 <td>
                                     <?php echo $data['academic_qualification_2']?>
@@ -438,7 +445,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    التخصص
+                                    اسم الجامعة 2
                                 </td>
                                 <td>
                                     <?php echo $data['university_2']?>
@@ -446,7 +453,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    سنه التخرج
+                                    مكانها 2
                                 </td>
                                 <td>
                                     <?php echo $data['locition_2']?>
@@ -454,7 +461,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    المؤهل الدراسي
+                                    مده الدراسة 2
                                 </td>
                                 <td>
                                     <?php echo $data['num_of_years_2']?>
@@ -462,7 +469,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    المؤهل الدراسي
+                                    المعدل التراكمي 2
                                 </td>
                                 <td>
                                     <?php echo $data['gpa_2']?>
@@ -470,7 +477,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    المؤهل الدراسي
+                                    سنه التخرج 2
                                 </td>
                                 <td>
                                     <?php echo $data['year_graduated_2']?>
@@ -480,12 +487,12 @@
                         <table>
                             <tr class="no">
                                 <th colspan='12'>
-                                    3 المؤهلات العملية
+                                    المؤهلات العلمية 3
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    جهة الدراسة
+                                    المؤهل العلمي 3
                                 </td>
                                 <td>
                                     <?php echo $data['academic_qualification_3']?>
@@ -493,7 +500,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    التخصص
+                                    اسم الجامعة 3
                                 </td>
                                 <td>
                                     <?php echo $data['university_3']?>
@@ -501,7 +508,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    سنه التخرج
+                                    مكانها 3
                                 </td>
                                 <td>
                                     <?php echo $data['locition_3']?>
@@ -509,7 +516,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    المؤهل الدراسي
+                                    مده الدراسة 3
                                 </td>
                                 <td>
                                     <?php echo $data['num_of_years_3']?>
@@ -517,7 +524,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    المؤهل الدراسي
+                                    المعدل التراكمي 3
                                 </td>
                                 <td>
                                     <?php echo $data['gpa_3']?>
@@ -525,7 +532,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    المؤهل الدراسي
+                                    سنه التخرج 3
                                 </td>
                                 <td>
                                     <?php echo $data['year_graduated_3']?>
@@ -535,12 +542,12 @@
                         <table>
                             <tr class="no">
                                 <th colspan='12'>
-                                    1 الدورات التدريبية
+                                    الدورات التدريبية 1
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    اسم الدورة
+                                    اسم الدوره 1
                                 </td>
                                 <td>
                                     <?php echo $data['course_name_1']?>
@@ -548,7 +555,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    مكان الدورة
+                                    المده 1
                                 </td>
                                 <td>
                                     <?php echo $data['duration_1']?>
@@ -556,7 +563,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    مده الدورة
+                                    الجهة التي اعدتها 1
                                 </td>
                                 <td>
                                     <?php echo $data['sponsor_1']?>
@@ -564,7 +571,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    نوع الشهادة
+                                    تاريخها 1
                                 </td>
                                 <td>
                                     <?php echo $data['course_date_1']?>
@@ -572,22 +579,22 @@
                             </tr>
                             <tr>
                                 <td >
-                                    صورة شهادة الدورات التدريبية
+                                    مكانها 1
                                 </td>
                                 <td>
-                                    <?="$data[course_location_1]" ?>
+                                    <?php echo $data['course_location_1']?>
                                 </td>
                             </tr>
                         </table>
                         <table>
                             <tr class="no">
                                 <th colspan='12'>
-                                    2 الدورات التدريبية
+                                    الدورات التدريبية 2
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    اسم الدورة
+                                    اسم الدوره 2
                                 </td>
                                 <td>
                                     <?php echo $data['course_name_2']?>
@@ -595,7 +602,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    مكان الدورة
+                                    المده 2
                                 </td>
                                 <td>
                                     <?php echo $data['duration_2']?>
@@ -603,7 +610,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    مده الدورة
+                                    الجهة التي اعدتها 2
                                 </td>
                                 <td>
                                     <?php echo $data['sponsor_2']?>
@@ -611,7 +618,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    نوع الشهادة
+                                    تاريخها 2
                                 </td>
                                 <td>
                                     <?php echo $data['course_date_2']?>
@@ -619,22 +626,22 @@
                             </tr>
                             <tr>
                                 <td >
-                                    صورة شهادة الدورات التدريبية
+                                    مكانها 2
                                 </td>
                                 <td>
-                                    <?="$data[course_location_2]" ?>
+                                    <?php echo $data['course_location_2']?>
                                 </td>
                             </tr>
                         </table>
                         <table>
                             <tr class="no">
                                 <th colspan='12'>
-                                    3 الدورات التدريبية
+                                    الدورات التدريبية 3
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    اسم الدورة
+                                    اسم الدوره 3
                                 </td>
                                 <td>
                                     <?php echo $data['course_name_3']?>
@@ -642,7 +649,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    مكان الدورة
+                                    المده 3
                                 </td>
                                 <td>
                                     <?php echo $data['duration_3']?>
@@ -650,7 +657,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    مده الدورة
+                                    الجهة التي اعدتها 3
                                 </td>
                                 <td>
                                     <?php echo $data['sponsor_3']?>
@@ -658,7 +665,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    نوع الشهادة
+                                    تاريخها 3
                                 </td>
                                 <td>
                                     <?php echo $data['course_date_3']?>
@@ -666,22 +673,22 @@
                             </tr>
                             <tr>
                                 <td >
-                                    صورة شهادة الدورات التدريبية
+                                    مكانها 3
                                 </td>
                                 <td>
-                                    <?="$data[course_location_3]" ?>
+                                    <?php echo $data['course_location_3']?>
                                 </td>
                             </tr>
                         </table>
                         <table>
                             <tr class="no">
                                 <th colspan='12'>
-                                    4 الدورات التدريبية
+                                    الدورات التدريبية 4
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    اسم الدورة
+                                    اسم الدوره 4
                                 </td>
                                 <td>
                                     <?php echo $data['course_name_4']?>
@@ -689,7 +696,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    مكان الدورة
+                                    المده 4
                                 </td>
                                 <td>
                                     <?php echo $data['duration_4']?>
@@ -697,7 +704,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    مده الدورة
+                                    الجهة التي اعدتها 4
                                 </td>
                                 <td>
                                     <?php echo $data['sponsor_4']?>
@@ -705,7 +712,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    نوع الشهادة
+                                    تاريخها 4
                                 </td>
                                 <td>
                                     <?php echo $data['course_date_4']?>
@@ -713,22 +720,22 @@
                             </tr>
                             <tr>
                                 <td >
-                                    صورة شهادة الدورات التدريبية
+                                    مكانها 4
                                 </td>
                                 <td>
-                                    <?="$data[course_location_4]" ?>
+                                    <?php echo $data['course_location_4']?>
                                 </td>
                             </tr>
                         </table>
                         <table>
                             <tr class="no">
                                 <th colspan='12'>
-                                    5 الدورات التدريبية
+                                    الدورات التدريبية 5
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    اسم الدورة
+                                    اسم الدوره 5
                                 </td>
                                 <td>
                                     <?php echo $data['course_name_5']?>
@@ -736,7 +743,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    مكان الدورة
+                                    المده 5
                                 </td>
                                 <td>
                                     <?php echo $data['duration_5']?>
@@ -744,7 +751,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    مده الدورة
+                                    الجهة التي اعدتها 5
                                 </td>
                                 <td>
                                     <?php echo $data['sponsor_5']?>
@@ -752,7 +759,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    نوع الشهادة
+                                    تاريخها 5
                                 </td>
                                 <td>
                                     <?php echo $data['course_date_5']?>
@@ -760,22 +767,22 @@
                             </tr>
                             <tr>
                                 <td >
-                                    صورة شهادة الدورات التدريبية
+                                    مكانها 5
                                 </td>
                                 <td>
-                                    <?="$data[course_location_5]" ?>
+                                    <?php echo $data['course_location_5']?>
                                 </td>
                             </tr>
                         </table>
-                        <table class="no">
-                            <tr>
+                        <table>
+                            <tr class="no">
                                 <th colspan='12'>
-                                    الخبرة العملية
+                                    الوظائف الأخيرة 1
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    مسمي الوظيفة
+                                    اسم الجهة 1
                                 </td>
                                 <td>
                                     <?php echo $data['employer_name_1']?>
@@ -783,7 +790,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    جهة العمل
+                                    اسم الوظيفة 1
                                 </td>
                                 <td>
                                     <?php echo $data['positica_1']?>
@@ -791,7 +798,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الفترة من
+                                    التاريخ من 1
                                 </td>
                                 <td>
                                     <?php echo $data['date_from_1']?>
@@ -799,7 +806,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الي
+                                    التاريخ الي 1
                                 </td>
                                 <td>
                                     <?php echo $data['date_to_1']?>
@@ -807,30 +814,30 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الراتب
+                                    الراتب الاساسي 1
                                 </td>
                                 <td>
-                                    <?php echo $data['basic_salary_1']?>
+                                    <?="$data[basic_salary_1]"?>
                                 </td>
                             </tr>
                             <tr>
                                 <td >
-                                    سبب ترك العمل
+                                    سبب ترك الوظيفة 1
                                 </td>
                                 <td>
-                                    <?php echo $data['reason_for_leaving_1']?>
+                                    <?="$data[reason_for_leaving_1]"?>
                                 </td>
                             </tr>
                         </table>
-                        <table class="no">
-                            <tr>
+                        <table>
+                            <tr class="no">
                                 <th colspan='12'>
-                                    الخبرة العملية
+                                    الوظائف الأخيرة 2
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    مسمي الوظيفة
+                                    اسم الجهة 2
                                 </td>
                                 <td>
                                     <?php echo $data['employer_name_2']?>
@@ -838,7 +845,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    جهة العمل
+                                    اسم الوظيفة 2
                                 </td>
                                 <td>
                                     <?php echo $data['positica_2']?>
@@ -846,7 +853,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الفترة من
+                                    التاريخ من 2
                                 </td>
                                 <td>
                                     <?php echo $data['date_from_2']?>
@@ -854,7 +861,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الي
+                                    التاريخ الي 2
                                 </td>
                                 <td>
                                     <?php echo $data['date_to_2']?>
@@ -862,30 +869,30 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الراتب
+                                    الراتب الاساسي 2
                                 </td>
                                 <td>
-                                    <?php echo $data['basic_salary_2']?>
+                                    <?="$data[basic_salary_2]" ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td >
-                                    سبب ترك العمل
+                                    سبب ترك الوظيفة 2
                                 </td>
                                 <td>
-                                    <?php echo $data['reason_for_leaving_2']?>
+                                    <?="$data[reason_for_leaving_2]" ?>
                                 </td>
                             </tr>
                         </table>
-                        <table class="no">
-                            <tr>
+                        <table>
+                            <tr class="no">
                                 <th colspan='12'>
-                                    الخبرة العملية
+                                    الوظائف الأخيرة 3
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    مسمي الوظيفة
+                                    اسم الجهة 3
                                 </td>
                                 <td>
                                     <?php echo $data['employer_name_3']?>
@@ -893,7 +900,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    جهة العمل
+                                    اسم الوظيفة 3
                                 </td>
                                 <td>
                                     <?php echo $data['positica_3']?>
@@ -901,7 +908,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الفترة من
+                                    التاريخ من 3
                                 </td>
                                 <td>
                                     <?php echo $data['date_from_3']?>
@@ -909,7 +916,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الي
+                                    التاريخ الي 3
                                 </td>
                                 <td>
                                     <?php echo $data['date_to_3']?>
@@ -917,30 +924,30 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الراتب
+                                    الراتب الاساسي 3
                                 </td>
                                 <td>
-                                    <?php echo $data['basic_salary_3']?>
+                                    <?="$data[basic_salary_3]" ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td >
-                                    سبب ترك العمل
+                                    سبب ترك الوظيفة 3
                                 </td>
                                 <td>
-                                    <?php echo $data['reason_for_leaving_3']?>
+                                    <?="$data[reason_for_leaving_3]" ?>
                                 </td>
                             </tr>
                         </table>
-                        <table class="no">
-                            <tr>
+                        <table>
+                            <tr class="no">
                                 <th colspan='12'>
-                                    الخبرة العملية
+                                    الوظائف الأخيرة 4
                                 </th>
                             </tr>
                             <tr>
                                 <td>
-                                    مسمي الوظيفة
+                                    اسم الجهة 4
                                 </td>
                                 <td>
                                     <?php echo $data['employer_name_4']?>
@@ -948,7 +955,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    جهة العمل
+                                    اسم الوظيفة 4
                                 </td>
                                 <td>
                                     <?php echo $data['positica_4']?>
@@ -956,7 +963,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الفترة من
+                                    التاريخ من 4
                                 </td>
                                 <td>
                                     <?php echo $data['date_from_4']?>
@@ -964,7 +971,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الي
+                                    التاريخ الي 4
                                 </td>
                                 <td>
                                     <?php echo $data['date_to_4']?>
@@ -972,25 +979,30 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الراتب
+                                    الراتب الاساسي 4
                                 </td>
                                 <td>
-                                    <?php echo $data['basic_salary_4']?>
+                                    <?="$data[basic_salary_4]" ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td >
-                                    سبب ترك العمل
+                                    سبب ترك الوظيفة 4
                                 </td>
                                 <td>
-                                    <?php echo $data['reason_for_leaving_4']?>
+                                    <?="$data[reason_for_leaving_4]" ?>
                                 </td>
                             </tr>
                         </table>
                         <table>
+                            <tr class="no">
+                                <th colspan='12'>
+                                    إجمالي الدخل الشهري لأخر وظيفة
+                                </th>
+                            </tr>
                             <tr>
-                                <td >
-                                    هل تعمل في الوقت الحالي
+                                <td>
+                                    الراتب الأخير
                                 </td>
                                 <td>
                                     <?php echo $data['last_sallary']?>
@@ -998,17 +1010,22 @@
                             </tr>
                         </table>
                         <table>
+                            <tr class="no">
+                                <th colspan='12'>
+                                    المهارات
+                                </th>
+                            </tr>
                             <tr>
-                                <td >
-                                    هل تعمل في الوقت الحالي
+                                <td>
+                                    مهارة 1
                                 </td>
                                 <td>
                                     <?php echo $data['skills_1']?>
                                 </td>
                             </tr>
                             <tr>
-                                <td >
-                                    الواجبات و المسئوليات اثناء عملك
+                                <td>
+                                    مهارة 2
                                 </td>
                                 <td>
                                     <?php echo $data['skills_2']?>
@@ -1016,7 +1033,7 @@
                             </tr>
                             <tr>
                                 <td >
-                                    هل تعمل في الوقت الحالي
+                                    مهارة 3
                                 </td>
                                 <td>
                                     <?php echo $data['skills_3']?>
@@ -1024,10 +1041,166 @@
                             </tr>
                             <tr>
                                 <td >
-                                    الواجبات و المسئوليات اثناء عملك
+                                    مهارة 4
                                 </td>
                                 <td>
                                     <?php echo $data['skills_4']?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr class="no">
+                                <th colspan='12'>
+                                    اللغة العربية
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    القراءة
+                                </td>
+                                <td>
+                                    <?php echo $data['arabic_reading']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    الكتابة
+                                </td>
+                                <td>
+                                    <?php echo $data['arabic_writing']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    التحدث
+                                </td>
+                                <td>
+                                    <?php echo $data['arabic_speaking']?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr class="no">
+                                <th colspan='12'>
+                                    اللغة الإنجليزية
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    القراءة
+                                </td>
+                                <td>
+                                    <?php echo $data['english_reading']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    الكتابة
+                                </td>
+                                <td>
+                                    <?php echo $data['english_writing']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    التحدث
+                                </td>
+                                <td>
+                                    <?php echo $data['english_speaking']?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="no">
+                            <tr>
+                                <th colspan='12'>
+                                    الهوايات
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    الهواية 1
+                                </td>
+                                <td>
+                                    <?php echo $data['hobbies_1']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    الهواية 2
+                                </td>
+                                <td>
+                                    <?php echo $data['hobbies_2']?>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="no">
+                            <tr>
+                                <th colspan='12'>
+                                    اشخاص بأمكاننا الأتصال بهم وقت الضرورة
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    اسم الشخص 1
+                                </td>
+                                <td>
+                                    <?php echo $data['person_name_1']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    صله القرابة 1
+                                </td>
+                                <td>
+                                    <?php echo $data['person_relationship_1']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    رقم الهاتف 1
+                                </td>
+                                <td>
+                                    <?php echo $data['person_phone_1']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    العنوان 1
+                                </td>
+                                <td>
+                                    <?php echo $data['person_address_1']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    اسم الشخص 2
+                                </td>
+                                <td>
+                                    <?php echo $data['person_name_2']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    صلة القرابة 2
+                                </td>
+                                <td>
+                                    <?php echo $data['person_relationship_2']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    رقم الهاتف 2
+                                </td>
+                                <td>
+                                    <?php echo $data['person_phone_2']?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    العنوان 2
+                                </td>
+                                <td>
+                                    <?php echo $data['person_address_2']?>
                                 </td>
                             </tr>
                         </table>
@@ -1262,169 +1435,6 @@
                                 ";
                             }    
                         ?>
-                        <table>
-                            <tr class='no'>
-                                <th colspan='12'>
-                                    الشخص الاول الذي يمكن الرجوع اليه 
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الاسم
-                                </td>
-                                <td>
-                                    <?php echo $data['arabic_reading']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الوظيفة
-                                </td>
-                                <td>
-                                    <?php echo $data['arabic_writing']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    عنوان الاتصال
-                                </td>
-                                <td>
-                                    <?php echo $data['arabic_speaking']?>
-                                </td>
-                            </tr>
-                        </table>
-                        <table>
-                            <tr class='no'>
-                                <th colspan='12'>
-                                    الشخص الاول الذي يمكن الرجوع اليه 
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الاسم
-                                </td>
-                                <td>
-                                    <?php echo $data['english_reading']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الوظيفة
-                                </td>
-                                <td>
-                                    <?php echo $data['english_writing']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    عنوان الاتصال
-                                </td>
-                                <td>
-                                    <?php echo $data['english_speaking']?>
-                                </td>
-                            </tr>
-                        </table>
-                        <table>
-                            <tr class='no'>
-                                <th colspan='12'>
-                                    الشخص الاول الذي يمكن الرجوع اليه 
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الاسم
-                                </td>
-                                <td>
-                                    <?php echo $data['hobbies_1']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الوظيفة
-                                </td>
-                                <td>
-                                    <?php echo $data['hobbies_2']?>
-                                </td>
-                            </tr>
-                        </table>
-                        <table>
-                            <tr class='no'>
-                                <th colspan='12'>
-                                    الشخص الاول الذي يمكن الرجوع اليه 
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الاسم
-                                </td>
-                                <td>
-                                    <?php echo $data['person_name_1']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الوظيفة
-                                </td>
-                                <td>
-                                    <?php echo $data['person_relationship_1']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    عنوان الاتصال
-                                </td>
-                                <td>
-                                    <?php echo $data['person_phone_1']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    رقم الهاتف
-                                </td>
-                                <td>
-                                    <?php echo $data['person_address_1']?>
-                                </td>
-                            </tr>
-                        </table>
-                        <table>
-                            <tr class='no'>
-                                <th colspan='12'>
-                                    الشخص الاول الذي يمكن الرجوع اليه 
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الاسم
-                                </td>
-                                <td>
-                                    <?php echo $data['person_name_2']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    الوظيفة
-                                </td>
-                                <td>
-                                    <?php echo $data['person_relationship_2']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    عنوان الاتصال
-                                </td>
-                                <td>
-                                    <?php echo $data['person_phone_2']?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    رقم الهاتف
-                                </td>
-                                <td>
-                                    <?php echo $data['person_address_2']?>
-                                </td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
             </div>
