@@ -98,79 +98,9 @@
         <!-- content -->
         <div class='content'>
             <!-- menu -->
-            <div class='menu'>
-                <ul>        
-                    <li class='li'>
-                        <a href='#' class=''>
-                            <i class='fa-solid fa-parachute-box'></i>
-                            <span>طلبات التوظيف</span>
-                            <i class='fa fa-angle-left'></i>
-                        </a>
-                        <ul class='mm-collapse'>
-                            <li>
-                                <a href='../index?employid=<?php echo $employ['employ_id']?>'>
-                                    <i class='fas fa-file-invoice'></i>
-                                    <span> الطلبات </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='../del/index?employid=<?php echo $employ['employ_id']?>'>
-                                    <i class="fa-solid fa-trash"></i>
-                                    <span> المحذوفات </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class='li'>
-                        <a href='#' class='active'>
-                            <i class='fa-solid fa-employs-line'></i>
-                            <span>قائمة المعينيين</span>
-                            <i class='fa fa-angle-left'></i>
-                        </a>
-                        <ul class='mm-collapse'>
-                            <li>
-                                <a href='../index_appointed?employid=<?php echo $employ['employ_id']?>' class=''>
-                                    <i class='fa-solid fa-id-card-clip'></i>
-                                    <span> المعينيين  </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='../del/index_appointed?employid=<?php echo $employ['employ_id']?>'>
-                                    <i class="fa-solid fa-trash"></i>
-                                    <span> المحذوفات </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class='li'>
-                        <a href='#' class=''>
-                            <i class="fa-solid fa-signs-post"></i>
-                            <span>قائمة المؤجلين</span>
-                            <i class='fa fa-angle-left'></i>
-                        </a>
-                        <ul class='mm-collapse'>
-                            <li>
-                                <a href='../index_postpone?employid=<?php echo $employ['employ_id']?>'>
-                                    <i class='fa-solid fa-info'></i>
-                                    <span> المؤجلين  </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='../del/index_postpone?employid=<?php echo $employ['employ_id']?>'>
-                                    <i class="fa-solid fa-trash"></i>
-                                    <span> المحذوفات  </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class='settings'>
-                        <a href='../settings?employid=<?php echo $employ['employ_id']?>&mood=create'>
-                            <i class='fa fa-cog'></i>
-                            <span>الاعدادات</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <?php
+                include '../addition/menu.php';
+            ?>
             <!-- show-board -->
             <div class='show-board'>
                 <div class='title-info'>

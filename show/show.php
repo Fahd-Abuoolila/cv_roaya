@@ -90,79 +90,9 @@
         <!-- content -->
         <div class='content'>
             <!-- menu -->
-            <div class='menu'>
-                <ul>        
-                    <li class='li'>
-                        <a href='#'>
-                            <i class="fa-solid fa-person-walking-luggage"></i>
-                            <span>طلبات التوظيف</span>
-                            <i class='fa fa-angle-left'></i>
-                        </a>
-                        <ul class='mm-collapse'>
-                            <li>
-                                <a href='../index?employid=<?php echo $user['employ_id']?>'>
-                                    <i class='fas fa-file-invoice'></i>
-                                    <span> الطلبات </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='../del/index?employid=<?php echo $user['employ_id']?>'>
-                                    <i class="fa-solid fa-trash"></i>
-                                    <span> المحذوفات </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class='li'>
-                        <a href='#' class='active'>
-                            <i class="fa-solid fa-person-hiking"></i>
-                            <span>قائمة المعينيين</span>
-                            <i class='fa fa-angle-left'></i>
-                        </a>
-                        <ul class='mm-collapse'>
-                            <li>
-                                <a href='../index_appointed?employid=<?php echo $user['employ_id']?>' class=''>
-                                    <i class='fa-solid fa-id-card-clip'></i>
-                                    <span> المعينيين  </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='../del/index_appointed?employid=<?php echo $user['employ_id']?>'>
-                                    <i class="fa-solid fa-trash"></i>
-                                    <span> المحذوفات </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class='li'>
-                        <a href='#'>
-                            <i class="fa-solid fa-signs-post"></i>
-                            <span>قائمة المؤجلين</span>
-                            <i class='fa fa-angle-left'></i>
-                        </a>
-                        <ul class='mm-collapse'>
-                            <li>
-                                <a href='../index_postpone?employid=<?php echo $user['employ_id']?>'>
-                                    <i class='fa-solid fa-info'></i>
-                                    <span> المؤجلين  </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href='../del/index_postpone?employid=<?php echo $user['employ_id']?>'>
-                                    <i class="fa-solid fa-trash"></i>
-                                    <span> المحذوفات  </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class='settings'>
-                        <a href='../settings?employid=<?php echo $user['employ_id']?>&mood=create'>
-                            <i class="fa-solid fa-gear"></i>
-                            <span>الاعدادات</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <?php
+                include '../addition/menu.php';
+            ?>
             <!-- show-board -->
             <div class='show-board'>
                 <div class='title-info'>
@@ -401,7 +331,7 @@
                                     مكانها 1
                                 </td>
                                 <td>
-                                    <?php echo $data['locition_1']?>
+                                    <?php echo $data['university_locition_1']?>
                                 </td>
                             </tr>
                             <tr>
@@ -456,7 +386,7 @@
                                     مكانها 2
                                 </td>
                                 <td>
-                                    <?php echo $data['locition_2']?>
+                                    <?php echo $data['university_locition_2']?>
                                 </td>
                             </tr>
                             <tr>
@@ -511,7 +441,7 @@
                                     مكانها 3
                                 </td>
                                 <td>
-                                    <?php echo $data['locition_3']?>
+                                    <?php echo $data['university_locition_3']?>
                                 </td>
                             </tr>
                             <tr>
@@ -1439,36 +1369,6 @@
                 </div>
             </div>
         </div>
-        <!-- js files -->
-        <script>
-            let exportButton = document.querySelector('#export');
-            let space = document.querySelector('.space');
-            let space_2 = document.querySelector('.space2');
-            let space_3 = document.querySelector('.space3');
-            let space_4 = document.querySelector('.space4');
-            let space_5 = document.querySelector('.space5');
-            let space_6 = document.querySelector('.space6');
-            function ExportToPDF() {
-                space.innerHTML = `<br><br><br>`;
-                space_2.innerHTML = `<br><br><br><br><br>`;
-                space_3.innerHTML = `<br><br><br><br><br><br><br><br><br>`;
-                space_4.innerHTML = `<br><br><br><br><br><br><br><br><br><br><br><br>`;
-                space_5.innerHTML = `<br><br><br><br><br><br><br><br><br><br><br><br><br>`;
-                space_6.innerHTML = `<br><br><br><br><br><br><br><br><br><br><br>`;
-                var table = document.querySelector("#employee_specific");
-                var opt = {
-                    margin: -0.1,
-                    filename: 'استمارة طلب وظيفة--<?php echo $data['employ_name']?>.pdf',
-                    image: { type: 'jpeg', quality: 1 },
-                    html2canvas: { scale: 3 },
-                    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-                };
-                pdf(table, opt);
-            }
-            exportButton.onclick = function(){
-                ExportToPDF();
-            }
-        </script>
         <!-- alert -->
         <div class="alert alert-success d-none" role="alert" id="alert"></div>
         <!-- js files -->
