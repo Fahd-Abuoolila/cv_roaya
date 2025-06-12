@@ -89,6 +89,7 @@
                         <select id="marital_status" name="marital_status" required>
                             <option value="-">-</option>
                             <option value="اعزب"> اعزب </option>
+                            <option value="ارمل"> ارمل </option>
                             <option value="متزوج">متزوج</option>
                         </select>
                         <label for="marital_status">الحالة الأجتماعية</label>

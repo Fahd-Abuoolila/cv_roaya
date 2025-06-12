@@ -24,6 +24,12 @@
         <link rel='stylesheet' href='../css/all.min.css'>
         <link rel='stylesheet' href='../css/bootstrap.css'>
         <title>Roaya Pay</title>
+        <style>
+            .menu > ul > li:nth-child(1):not(.open) > a ,
+            .menu > ul > li:nth-child(1) > a + ul > li:nth-child(1) > a{
+                background: #5aaa5791 !important;
+            }
+        </style>
     </head>
     <body>
         <?php
@@ -40,58 +46,14 @@
             $data = mysqli_fetch_array($select);
         ?>
         <!-- header -->
-        <div class='header'>
-            <div>
-                <a href='../index' class='navbar-brand'>
-                    <img src='../img/Roaya.png' alt='' draggable='false'>
-                </a>
-                <div id='nav'> 
-                    <div class='collapse navbar-collapse mx-2'>
-                        <div>
-                            <div class='dropdowns'>
-                                <div class='dropdown mx-2 my-2'>
-                                    <button class='btn dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false'>
-                                        <span id='employ_Name_Show'></span>
-                                    </button>
-                                    <div class='dropdown-menu'>
-                                        <a class='dropdown-item' id="name" onclick="copyToClipboard(this.id)">
-                                            <i class='fa fa-employ text-dark'></i>
-                                            <p class='mx-2'>
-                                                <?php echo $user['employ_name']?>
-                                            </p>
-                                        </a>
-                                        <div class='dropdown-divider m-0'></div>
-                                        <a class='dropdown-item' id="email" onclick="copyToClipboard(this.id)">
-                                            <i class="fa-regular fa-envelope"></i>
-                                            <p class='mx-2'>
-                                                <?php echo $user['employ_email']?>
-                                            </p>
-                                        </a>
-                                        <div class='dropdown-divider m-0'></div>
-                                        <a class='dropdown-item bg-danger text-center text-light' style="cursor: pointer; border-radius: 0 0 3.5px 3.5px;" id="logout" onclick="logout()">
-                                            <i class="fa-solid fa-unlock-keyhole"></i>
-                                            <span class='mt-2'>
-                                                Log Out
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='IconMenu'>
-                        <span></span>
-                        <span class='Active'></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php
+            include '../addition/header_sub.php';
+        ?>
         <!-- content -->
         <div class='content'>
             <!-- menu -->
             <?php
-                include '../addition/menu.php';
+                include '../addition/menu_sub.php';
             ?>
             <!-- show-board -->
             <div class='show-board'>
@@ -104,7 +66,7 @@
                 <form novalidate>
                     <div class='modal-header text-light'>
                     <h5 class='modal-title' id='showdataTitle'>عرض استمارة الموظف 
-                        <span style="color: #007bff;">
+                        <span style="color: #5aaa57;">
                             <?php echo"$data[first_name]"." "."$data[second_name]"." "."$data[third_name]"." "."$data[last_name]"  ?> 
                         </span>
                     </h5>
@@ -1371,6 +1333,9 @@
         </div>
         <!-- alert -->
         <div class="alert alert-success d-none" role="alert" id="alert"></div>
+        <?php
+            include 'addition/settings.php';
+        ?>
         <!-- js files -->
         <script src='../js/logout_2.js'></script>
         <script src='../js/main.js'></script>
@@ -1384,10 +1349,14 @@
         <script src='../js/pdf.bundle.min.js'></script>
         <script src='../js/pdf.bundle.js'></script>
         <script>
-            let name =document.querySelector('#employ_Name_Show');
-            name.innerHTML = "<?php echo $user['employ_name']?>";
-        </script>
-        <script>
+            // منع الرجوع للصفحة السابقة
+            if (window.history && window.history.pushState) {
+                window.history.pushState(null, null, window.location.href);
+                window.onpopstate = function () {
+                    window.history.pushState(null, null, window.location.href);
+                };
+            }
+
             if(<?php echo $user['ability']?> == true){
                 document.querySelector('.settings').style.display = 'block';
             }else{

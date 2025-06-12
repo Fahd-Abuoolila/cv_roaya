@@ -24,6 +24,12 @@
         <link rel='stylesheet' href='css/all.min.css'>
         <link rel='stylesheet' href='css/bootstrap.css'>
         <title>Roaya Pay</title>
+        <style>
+            .menu > ul > li:nth-child(2):not(.open) > a ,
+            .menu > ul > li:nth-child(2) > a + ul > li:nth-child(1) > a{
+                background: #5aaa5791 !important;
+            }
+        </style>
     </head>
     <body>
         <?php
@@ -37,58 +43,14 @@
             mysqli_query($conection, "UPDATE users SET location='index' WHERE employ_id=$IDuse");
         ?>
         <!-- header -->
-        <div class='header'>
-            <div>
-                <a href='index.html' class='navbar-brand'>
-                    <img src='img/Roaya.png' alt='' draggable='false'>
-                </a>
-                <div id='nav'> 
-                    <div class='collapse navbar-collapse mx-2'>
-                        <div>
-                            <div class='dropdowns'>
-                                <div class='dropdown mx-2 my-2'>
-                                    <button class='btn dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false'>
-                                        <span id='employ_Name_Show'></span>
-                                    </button>
-                                    <div class='dropdown-menu'>
-                                        <a class='dropdown-item' id="name" onclick="copyToClipboard(this.id)">
-                                            <i class="fa-regular fa-user"></i>
-                                            <p class='mx-2'>
-                                                <?php echo $user['employ_name']?>
-                                            </p>
-                                        </a>
-                                        <div class='dropdown-divider m-0'></div>
-                                        <a class='dropdown-item' id="email" onclick="copyToClipboard(this.id)">
-                                            <i class="fa-regular fa-envelope"></i>
-                                            <p class='mx-2'>
-                                                <?php echo $user['employ_email']?>
-                                            </p>
-                                        </a>
-                                        <div class='dropdown-divider m-0'></div>
-                                        <a class='dropdown-item bg-danger text-center text-light' style="cursor: pointer; border-radius: 0 0 3.5px 3.5px;" id="Roayaut" onclick=>
-                                            <i class="fa-solid fa-unlock-keyhole"></i>
-                                            <span class='mt-2'>
-                                                Log Out
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='IconMenu'>
-                        <span></span>
-                        <span class='Active'></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php 
+            include 'addition/header.php';
+        ?>
         <!-- content -->
         <div class='content'>
             <!-- menu -->
             <?php 
-                include 'php/addition/menu.php';
+                include 'addition/menu.php';
             ?>
             <!-- show-board -->
             <div class='show-board'>
@@ -103,12 +65,6 @@
                                 <a class='dropdown-item px-1' onclick="ExportToXLSX('xls')">
                                     <button class='btn btn-info text-center text-light ml-2 w-100'>
                                         التصدير الي إكسيل   
-                                    </button>
-                                </a>
-                                <div class='dropdown-divider m-0'></div>
-                                <a class='dropdown-item px-1' onclick="ExportToPDF()">
-                                    <button class='btn btn-info text-center text-light ml-2 w-100'>
-                                        التصدير الي pdf
                                     </button>
                                 </a>
                             </div>
@@ -151,7 +107,6 @@
                                             search_items.value = '$_POST[search_items]';
                                         </script>
                                     ";
-                                
                                     if($_POST['search_items'] === 'name'){
                                         $full_name = explode(" ", $_POST['searchInput']);
                                         $SEARCH = $database->prepare("SELECT * FROM employee_appointed WHERE CONCAT(first_name, ' ', second_name, ' ', third_name, ' ', last_name) LIKE :value");
@@ -168,39 +123,26 @@
                                                 <td>$row[date_Of_date]</td>
                                                 <td>
                                                     <div class='dropdown'>
-                                                        <button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false' style='padding: 0 !important; height: 35px; width: 55px;'>
+                                                        <button class='btn btn-success dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false' style='padding: 0 !important; height: 35px; width: 55px;'>
                                                             <svg class='svg-inline--fa fa-gear p-1' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='gear' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' data-fa-i2svg=''><path fill='currentColor' d='M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z'></path></svg><!-- <i class='fa fa-cog p-1'></i> Font Awesome fontawesome.com -->
                                                         </button>
                                                         <div class='dropdown-menu' style='position: absolute; transform: translate3d(2px, 35px, 0px); top: 0px; left: 0px; will-change: transform;' x-placement='bottom-start'>
-                                                            <form action='show/show?employid=$employ[employ_id]' type='submit' method='post'>
+                                                            <form action='show/show_appointed' type='submit' method='post'>
                                                                 <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <button class='btn btn-primary w-100 my-1'>
+                                                                <button class='btn btn-success w-100 my-1'>
                                                                     عــرض
                                                                 </button>
                                                             </form>
-                                                            <form action='php/appointed?employid=$employ[employ_id]' type='submit' method='post'>
-                                                                <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <button class='btn btn-success w-100 my-1'>
-                                                                    تعيين
-                                                                </button>
-                                                            </form>
-                                                            <form action='php/postpone?employid=$employ[employ_id]' type='submit' method='post'>
-                                                                <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <button class='btn btn-dark text-white w-100 my-1'>
-                                                                    تأجيل
-                                                                </button>
-                                                            </form>
-                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal'>
+                                                            
+                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal$i'>
                                                                 حذف
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </td>                 
                                             </tr>
-                                            <form action='php/delete?employid=$employ[employ_id]' method='post'>
-                                                <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                            <form action='php/delete' method='post'>
+                                                <div class='modal fade' id='exampleModal$i' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                                     <div class='modal-dialog'>
                                                         <div class='modal-content'>
                                                             <div class='modal-header'>
@@ -210,8 +152,8 @@
                                                             </div>
                                                             <div class='modal-body'>
                                                                 <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <input type='hidden' id='TOtypedatabase' name='TOtypedatabase' value='delete_specific'>
+                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='employee_appointed'>
+                                                                <input type='hidden' id='TOtypedatabase' name='TOtypedatabase' value='delete_appointed'>
                                                                 <input class='form-control mb-2' type='text' placeholder='سبب الحذف' id='reason' name='reason'>
                                                                 <textarea class='form-control' id='reason_notes' name='reason_notes' rows='3' placeholder='ملاحظات'></textarea>
                                                             </div>
@@ -241,39 +183,25 @@
                                                 <td>$row[date_Of_date]</td>
                                                 <td>
                                                     <div class='dropdown'>
-                                                        <button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false' style='padding: 0 !important; height: 35px; width: 55px;'>
+                                                        <button class='btn btn-success dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false' style='padding: 0 !important; height: 35px; width: 55px;'>
                                                             <svg class='svg-inline--fa fa-gear p-1' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='gear' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' data-fa-i2svg=''><path fill='currentColor' d='M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z'></path></svg><!-- <i class='fa fa-cog p-1'></i> Font Awesome fontawesome.com -->
                                                         </button>
                                                         <div class='dropdown-menu' style='position: absolute; transform: translate3d(2px, 35px, 0px); top: 0px; left: 0px; will-change: transform;' x-placement='bottom-start'>
-                                                            <form action='show/show?employid=$employ[employ_id]' type='submit' method='post'>
+                                                            <form action='show/show_appointed' type='submit' method='post'>
                                                                 <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <button class='btn btn-primary w-100 my-1'>
+                                                                <button class='btn btn-success w-100 my-1'>
                                                                     عــرض
                                                                 </button>
                                                             </form>
-                                                            <form action='php/appointed?employid=$employ[employ_id]' type='submit' method='post'>
-                                                                <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <button class='btn btn-success w-100 my-1'>
-                                                                    تعيين
-                                                                </button>
-                                                            </form>
-                                                            <form action='php/postpone?employid=$employ[employ_id]' type='submit' method='post'>
-                                                                <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <button class='btn btn-dark text-white w-100 my-1'>
-                                                                    تأجيل
-                                                                </button>
-                                                            </form>
-                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal'>
+                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal$i'>
                                                                 حذف
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </td>                 
                                             </tr>
-                                            <form action='php/delete?employid=$employ[employ_id]' method='post'>
-                                                <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                            <form action='php/delete' method='post'>
+                                                <div class='modal fade' id='exampleModal$i' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                                     <div class='modal-dialog'>
                                                         <div class='modal-content'>
                                                             <div class='modal-header'>
@@ -283,8 +211,8 @@
                                                             </div>
                                                             <div class='modal-body'>
                                                                 <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <input type='hidden' id='TOtypedatabase' name='TOtypedatabase' value='delete_specific'>
+                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='employee_appointed'>
+                                                                <input type='hidden' id='TOtypedatabase' name='TOtypedatabase' value='delete_appointed'>
                                                                 <input class='form-control mb-2' type='text' placeholder='سبب الحذف' id='reason' name='reason'>
                                                                 <textarea class='form-control' id='reason_notes' name='reason_notes' rows='3' placeholder='ملاحظات'></textarea>
                                                             </div>
@@ -314,39 +242,25 @@
                                                 <td>$row[date_Of_date]</td>
                                                 <td>
                                                     <div class='dropdown'>
-                                                        <button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false' style='padding: 0 !important; height: 35px; width: 55px;'>
+                                                        <button class='btn btn-success dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false' style='padding: 0 !important; height: 35px; width: 55px;'>
                                                             <svg class='svg-inline--fa fa-gear p-1' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='gear' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' data-fa-i2svg=''><path fill='currentColor' d='M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z'></path></svg><!-- <i class='fa fa-cog p-1'></i> Font Awesome fontawesome.com -->
                                                         </button>
                                                         <div class='dropdown-menu' style='position: absolute; transform: translate3d(2px, 35px, 0px); top: 0px; left: 0px; will-change: transform;' x-placement='bottom-start'>
-                                                            <form action='show/show?employid=$employ[employ_id]' type='submit' method='post'>
+                                                            <form action='show/show_appointed' type='submit' method='post'>
                                                                 <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <button class='btn btn-primary w-100 my-1'>
+                                                                <button class='btn btn-success w-100 my-1'>
                                                                     عــرض
                                                                 </button>
                                                             </form>
-                                                            <form action='php/appointed?employid=$employ[employ_id]' type='submit' method='post'>
-                                                                <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <button class='btn btn-success w-100 my-1'>
-                                                                    تعيين
-                                                                </button>
-                                                            </form>
-                                                            <form action='php/postpone?employid=$employ[employ_id]' type='submit' method='post'>
-                                                                <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <button class='btn btn-dark text-white w-100 my-1'>
-                                                                    تأجيل
-                                                                </button>
-                                                            </form>
-                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal'>
+                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal$i'>
                                                                 حذف
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </td>                 
                                             </tr>
-                                            <form action='php/delete?employid=$employ[employ_id]' method='post'>
-                                                <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                            <form action='php/delete' method='post'>
+                                                <div class='modal fade' id='exampleModal$i' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                                     <div class='modal-dialog'>
                                                         <div class='modal-content'>
                                                             <div class='modal-header'>
@@ -356,8 +270,8 @@
                                                             </div>
                                                             <div class='modal-body'>
                                                                 <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <input type='hidden' id='TOtypedatabase' name='TOtypedatabase' value='delete_specific'>
+                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='employee_appointed'>
+                                                                <input type='hidden' id='TOtypedatabase' name='TOtypedatabase' value='delete_appointed'>
                                                                 <input class='form-control mb-2' type='text' placeholder='سبب الحذف' id='reason' name='reason'>
                                                                 <textarea class='form-control' id='reason_notes' name='reason_notes' rows='3' placeholder='ملاحظات'></textarea>
                                                             </div>
@@ -386,25 +300,25 @@
                                                 <td>$row[date_Of_date]</td>
                                                 <td>
                                                     <div class='dropdown'>
-                                                        <button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false' style='padding: 0 !important; height: 35px; width: 55px;'>
+                                                        <button class='btn btn-success dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false' style='padding: 0 !important; height: 35px; width: 55px;'>
                                                             <svg class='svg-inline--fa fa-gear p-1' aria-hidden='true' focusable='false' data-prefix='fas' data-icon='gear' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' data-fa-i2svg=''><path fill='currentColor' d='M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z'></path></svg><!-- <i class='fa fa-cog p-1'></i> Font Awesome fontawesome.com -->
                                                         </button>
                                                         <div class='dropdown-menu' style='position: absolute; transform: translate3d(2px, 35px, 0px); top: 0px; left: 0px; will-change: transform;' x-placement='bottom-start'>
-                                                            <form action='show/show?employid=$employ[employ_id]' type='submit' method='post'>
+                                                            <form action='show/show_appointed' type='submit' method='post'>
                                                                 <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <button class='btn btn-primary w-100 my-1'>
+                                                                <button class='btn btn-success w-100 my-1'>
                                                                     عــرض
                                                                 </button>
                                                             </form>
-                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal'>
+                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal$i'>
                                                                 حذف
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </td>                 
                                             </tr>
-                                            <form action='php/delete?employid=$employ[employ_id]' method='post'>
-                                                <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                            <form action='php/delete' method='post'>
+                                                <div class='modal fade' id='exampleModal$i' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                                     <div class='modal-dialog'>
                                                         <div class='modal-content'>
                                                             <div class='modal-header'>
@@ -414,8 +328,8 @@
                                                             </div>
                                                             <div class='modal-body'>
                                                                 <input type='hidden' id='id' name='id' value='$row[employ_id]'>
-                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='defult'>
-                                                                <input type='hidden' id='TOtypedatabase' name='TOtypedatabase' value='delete_specific'>
+                                                                <input type='hidden' id='typedatabase' name='typedatabase' value='employee_appointed'>
+                                                                <input type='hidden' id='TOtypedatabase' name='TOtypedatabase' value='delete_appointed'>
                                                                 <input class='form-control mb-2' type='text' placeholder='سبب الحذف' id='reason' name='reason'>
                                                                 <textarea class='form-control' id='reason_notes' name='reason_notes' rows='3' placeholder='ملاحظات'></textarea>
                                                             </div>
@@ -439,10 +353,10 @@
         </div>
         <!-- alert -->
         <div class="alert alert-success d-none" role="alert" id="alert"></div>
-        <!-- id form -->.
-        <form method='POST' id='employid_to_complete'>
-            <input type='hidden' name='employid' value='<?php echo $employ['employ_id']?>'>
-        </form>
+        <!-- id form -->
+        <?php
+            include 'addition/settings.php';
+        ?>
         <!-- js files -->
         <script src='js/main.js'></script>
         <script src='js/jquery-3.7.0.min.js'></script>
@@ -454,10 +368,6 @@
         <script src='js/pdf.bundle.min.js'></script>
         <script src='js/pdf.bundle.js'></script>
         <script src='js/export.js'></script>
-        <script>
-            let name = document.querySelector('#employ_Name_Show');
-            name.innerHTML = "<?php echo $employ['employ_name']?>";
-        </script>
         <script>
             // منع الرجوع للصفحة السابقة
             if (window.history && window.history.pushState) {
@@ -472,20 +382,6 @@
             }else{
                 document.querySelector('.settings').style.display = 'none';
             }
-            let hyperlink_to_moves = document.querySelectorAll('.hyperlink_to_move');
-            hyperlink_to_moves.forEach(function(link) {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    let target = this.getAttribute('href');
-                    console.log(target);
-                    let form = document.querySelector('#employid_to_complete');
-                    if(target == 'settings'){
-                        form.innerHTML += "<input type='hidden' name='mood' value='create'>";
-                    }
-                    form.setAttribute('action', target);
-                    form.submit();
-                });
-            });
         </script>
     </body>
 </html>

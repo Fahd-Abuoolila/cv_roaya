@@ -24,6 +24,12 @@
         <link rel='stylesheet' href='css/all.min.css'>
         <link rel='stylesheet' href='css/bootstrap.css'>
         <title>Roaya Pay</title>
+        <style>
+            .menu > ul > li:nth-child(1):not(.open) > a ,
+            .menu > ul > li:nth-child(1) > a + ul > li:nth-child(1) > a{
+                background: #5aaa5791 !important;
+            }
+        </style>
     </head>
     <body>
         <?php
@@ -37,56 +43,14 @@
             mysqli_query($conection, "UPDATE users SET location='index' WHERE employ_id=$IDuse");
         ?>
         <!-- header -->
-        <div class='header'>
-            <div>
-                <div class="right">
-                    <a href='index' class='navbar-brand'>
-                        <img src='img/Roaya.png' alt='' draggable='false'>
-                    </a>
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </div>
-                <div id='nav'> 
-                    <div class='collapse navbar-collapse mx-2'>
-                        <div>
-                            <div class='dropdowns'>
-                                <div class='dropdown mx-2 my-2'>
-                                    <button class='btn dropdown-toggle' type='button' data-toggle='dropdown' aria-expanded='false'>
-                                        <span id='employ_Name_Show'></span>
-                                    </button>
-                                    <div class='dropdown-menu'>
-                                        <a class='dropdown-item' id="name" onclick="copyToClipboard(this.id)">
-                                            <i class="fa-regular fa-user"></i>
-                                            <p class='mx-2'>
-                                                <?php echo $user['employ_name']?>
-                                            </p>
-                                        </a>
-                                        <div class='dropdown-divider m-0'></div>
-                                        <a class='dropdown-item' id="email" onclick="copyToClipboard(this.id)">
-                                            <i class="fa-regular fa-envelope"></i>
-                                            <p class='mx-2'>
-                                                <?php echo $user['employ_email']?>
-                                            </p>
-                                        </a>
-                                        <div class='dropdown-divider m-0'></div>
-                                        <a class='dropdown-item bg-danger text-center text-light' style="cursor: pointer; border-radius: 0 0 3.5px 3.5px;" id="Roayaut">
-                                            <i class="fa-solid fa-unlock-keyhole"></i>
-                                            <span class='mt-2'>
-                                                Log Out
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php 
+            include 'addition/header.php';
+        ?>
         <!-- content -->
         <div class='content'>
             <!-- menu -->
             <?php 
-                include 'php/addition/menu.php';
+                include 'addition/menu.php';
             ?>
             <!-- show-board -->
             <div class='show-board'>
@@ -183,7 +147,7 @@
                                                                         تأجيل
                                                                     </button>
                                                                 </form>
-                                                                <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal'>
+                                                                <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal$i'>
                                                                     حذف
                                                                 </button>
                                                             </div>
@@ -191,7 +155,7 @@
                                                     </td>                 
                                                 </tr>
                                                 <form action='php/delete' method='post'>
-                                                    <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                                    <div class='modal fade' id='exampleModal$i' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                                         <div class='modal-dialog'>
                                                             <div class='modal-content'>
                                                                 <div class='modal-header'>
@@ -256,7 +220,7 @@
                                                                         تأجيل
                                                                     </button>
                                                                 </form>
-                                                                <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal'>
+                                                                <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal$i'>
                                                                     حذف
                                                                 </button>
                                                             </div>
@@ -264,7 +228,7 @@
                                                     </td>                 
                                                 </tr>
                                                 <form action='php/delete' method='post'>
-                                                    <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                                    <div class='modal fade' id='exampleModal$i' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                                         <div class='modal-dialog'>
                                                             <div class='modal-content'>
                                                                 <div class='modal-header'>
@@ -329,7 +293,7 @@
                                                                         تأجيل
                                                                     </button>
                                                                 </form>
-                                                                <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal'>
+                                                                <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal$i'>
                                                                     حذف
                                                                 </button>
                                                             </div>
@@ -337,7 +301,7 @@
                                                     </td>                 
                                                 </tr>
                                                 <form action='php/delete' method='post'>
-                                                    <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                                    <div class='modal fade' id='exampleModal$i' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                                         <div class='modal-dialog'>
                                                             <div class='modal-content'>
                                                                 <div class='modal-header'>
@@ -401,7 +365,7 @@
                                                                     تأجيل
                                                                 </button>
                                                             </form>
-                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal'>
+                                                            <button type='button' class='btn btn-danger w-100 my-1' data-toggle='modal' data-target='#exampleModal$i'>
                                                                 حذف
                                                             </button>
                                                         </div>
@@ -409,7 +373,7 @@
                                                 </td>                 
                                             </tr>
                                             <form action='php/delete' method='post'>
-                                                <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                                <div class='modal fade' id='exampleModal$i' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                                     <div class='modal-dialog'>
                                                         <div class='modal-content'>
                                                             <div class='modal-header'>
@@ -445,9 +409,9 @@
         <!-- alert -->
         <div class="alert alert-success d-none" role="alert" id="alert"></div>
         <!-- id form -->
-        <form method='POST' id='employid_to_complete'>
-            <input type='hidden' name='employid' value='<?php echo $user['employ_id']?>'>
-        </form>
+        <?php
+            include 'addition/settings.php';
+        ?>
         <!-- js files -->
         <script src='js/main.js'></script>
         <script src='js/jquery-3.7.0.min.js'></script>
@@ -459,10 +423,6 @@
         <script src='js/pdf.bundle.min.js'></script>
         <script src='js/pdf.bundle.js'></script>
         <script src='js/export.js'></script>
-        <script>
-            let name = document.querySelector('#employ_Name_Show');
-            name.innerHTML = "<?php echo $user['employ_name']?>";
-        </script>
         <script>
             // منع الرجوع للصفحة السابقة
             if (window.history && window.history.pushState) {
@@ -477,20 +437,6 @@
             }else{
                 document.querySelector('.settings').style.display = 'none';
             }
-            // let hyperlink_to_moves = document.querySelectorAll('.hyperlink_to_move');
-            // hyperlink_to_moves.forEach(function(link) {
-            //     link.addEventListener('click', function(event) {
-            //         event.preventDefault();
-            //         let target = this.getAttribute('href');
-            //         console.log(target);
-            //         let form = document.querySelector('#employid_to_complete');
-            //         if(target == 'settings'){
-            //             form.innerHTML += "<input type='hidden' name='mood' value='create'>";
-            //         }
-            //         form.setAttribute('action', target);
-            //         form.submit();
-            //     });
-            // });
         </script>
     </body>
 </html>

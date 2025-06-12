@@ -56,13 +56,13 @@ div  .select + .btn:focus{
     justify-content: flex-start;
 }
 .show-board .modal-header span{
-    color: #0056B3;
+    color: #5aaa57;
     margin: 0 10px;
     font-weight: 900;
 }
 .show-board .modal-header::before{
     content: '';
-    background: #0056B3;
+    background: #5aaa57;
     height: 30px;
     width: 5px;
     border-radius: 10px;

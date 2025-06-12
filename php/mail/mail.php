@@ -23,7 +23,6 @@ try {
     $mail->isHTML(true);        //Set email format to HTML
     $mail->CharSet = "UTF-8"; 
 
-    echo '✅ تم إرسال الرسالة بنجاح';
 } catch (Exception $e) {
     echo "❌ فشل في الإرسال: {$mail->ErrorInfo}";
 }

@@ -20,7 +20,7 @@
         $conscription = !empty(trim($_POST['conscription'])) ? $_POST['conscription'] : '-';
         $marital_status = trim($_POST['marital_status']);
         $number_of_children = trim(isset($_POST['number_of_children']));
-        if($marital_status == "اعزب"){
+        if($marital_status == "اعزب" || $marital_status == 'ارمل'){
             $number_of_children = '-';
         }else if($marital_status == "متزوج"){
             $number_of_children = trim(isset($_POST['number_of_children']));

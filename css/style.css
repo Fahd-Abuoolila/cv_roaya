@@ -21,7 +21,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #0056b3;
+    background: #5aaa57;
     border-radius: 25px;
 }
 
@@ -203,7 +203,7 @@ svg.svg-inline--fa.fa-bars-staggered {
 
 .content p {
     margin: 0 !important;
-    color: #000;
+    color: #fff;
 }
 
 .show-board {
@@ -366,7 +366,7 @@ tr {
 }
 
 table tr:not(.no):hover {
-    background-color: #0056B3;
+    background-color: #5aaa57;
     color: var(--SecondColorBack);
 }
 

@@ -1,20 +1,20 @@
 <div class='menu'>
     <ul>        
         <li class='li'>
-            <a href='#' class="hyperlink_to_move">
+            <a href='#' class="">
                 <i class="fa-solid fa-person-walking-luggage"></i>
                 <span>طلبات التوظيف</span>
                 <i class='fa fa-angle-left'></i>
             </a>
             <ul class='mm-collapse'>
                 <li>
-                    <a href='<?php __dir__ .'/'?>index' class="active hyperlink_to_move">
+                    <a href='<?php __DIR__ .'/'?>index' class="">
                         <i class='fas fa-file-invoice'></i>
                         <span> الطلبات </span>
                     </a>
                 </li>
                 <li>
-                    <a href='<?php __dir__ .'/'?>del/index'>
+                    <a href='<?php __DIR__ .'/'?>del/index'>
                         <i class="fa-solid fa-trash"></i>
                         <span> المحذوفات </span>
                     </a>
@@ -29,13 +29,13 @@
             </a>
             <ul class='mm-collapse'>
                 <li>
-                    <a href='<?php __dir__ .'/'?>index_appointed'>
+                    <a href='<?php __DIR__ .'/'?>index_appointed'>
                         <i class='fa-solid fa-id-card-clip'></i>
                         <span> المعينيين  </span>
                     </a>
                 </li>
                 <li>
-                    <a href='<?php __dir__ .'/'?>del/index_appointed'>
+                    <a href='<?php __DIR__ .'/'?>del/index_appointed'>
                         <i class="fa-solid fa-trash"></i>
                         <span> المحذوفات </span>
                     </a>
@@ -50,13 +50,13 @@
             </a>
             <ul class='mm-collapse'>
                 <li>
-                    <a href='<?php __dir__ .'/'?>index_postpone'>
+                    <a href='<?php __DIR__ .'/'?>index_postpone'>
                         <i class='fa-solid fa-info'></i>
                         <span> المؤجلين  </span>
                     </a>
                 </li>
                 <li>
-                    <a href='<?php __dir__ .'/'?>del/index_postpone'>
+                    <a href='<?php __DIR__ .'/'?>del/index_postpone'>
                         <i class="fa-solid fa-trash"></i>
                         <span> المحذوفات  </span>
                     </a>
@@ -64,10 +64,10 @@
             </ul>
         </li>
         <li class='li settings'>
-            <a href='<?php __dir__ .'/'?>settings'>
+            <a href='<?php __DIR__ .'/'?>settings' id="settings">
                 <i class="fa-solid fa-gear"></i>
                 <span>الاعدادات</span>
             </a>
         </li>
     </ul>
-</div>
+</div> 
